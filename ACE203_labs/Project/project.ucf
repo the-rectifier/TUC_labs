@@ -1,0 +1,32 @@
+# clock pin for Basys2 Board
+NET "clk" LOC = "B8"; # Bank = 0, Signal name = MCLK
+NET "clk" CLOCK_DEDICATED_ROUTE = FALSE;
+
+NET "Strike_1" LOC = "A7"; # Bank = 0, Signal name = BTN0
+NET "Strike_2" LOC = "G12"; # Bank = 1, Signal name = BTN3
+NET "rst" LOC = "C11";  # Bank = 2, Signal name = BTN1
+
+NET "gamemode" LOC = "P11"; # Bank =2 , Signal name = SW0
+
+NET "led<0>" LOC = "M5"; # Bank = 2, Signal name = LD0
+NET "led<1>" LOC = "M11"; # Bank = 2, Signal name = LD1
+NET "led<2>" LOC = "P7"; # Bank = 3, Signal name = LD2
+NET "led<3>" LOC = "P6"; # Bank = 2, Signal name = LD3
+NET "led<4>" LOC = "N5"; # Bank = 2, Signal name = LD4
+NET "led<5>" LOC = "N4"; # Bank = 2, Signal name = LD5
+NET "led<6>" LOC = "P4"; # Bank = 2, Signal name = LD6
+NET "led<7>" LOC = "G1"; # Bank = 3, Signal name = LD7
+
+NET "An<0>" LOC = "K14"; # Bank = 1, Signal name = AN0
+NET "An<1>" LOC = "M13"; # Bank = 1, Signal name = AN1
+NET "An<2>" LOC = "J12"; # Bank = 1, Signal name = AN2
+NET "An<3>" LOC = "F12"; # Bank = 1, Signal name = AN3
+
+NET "CA" LOC = "L14"; # Bank = 1, Signal name = CA
+NET "CB" LOC = "H12"; # Bank = 1, Signal name = CB
+NET "CC" LOC = "N14"; # Bank = 1, Signal name = CC
+NET "CD" LOC = "N11"; # Bank = 2, Signal name = CD
+NET "CE" LOC = "P12"; # Bank = 2, Signal name = CE
+NET "CF" LOC = "L13"; # Bank = 1, Signal name = CF
+NET "CG" LOC = "M12"; # Bank = 1, Signal name = CG
+NET "DP" LOC = "N13"; # Bank = 1, Signal name = DP

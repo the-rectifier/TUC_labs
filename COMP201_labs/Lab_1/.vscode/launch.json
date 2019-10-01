@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - EShop",
+            "request": "launch",
+            "mainClass": "EShop",
+            "projectName": "comp201_lab1_1dd31ab7"
+        }
+    ]
+}

@@ -1,0 +1,29 @@
+
+
+# clock pin for Basys2 Board
+NET "clk" LOC = "B8"; # Bank = 0, Signal name = MCLK
+NET "clk" CLOCK_DEDICATED_ROUTE = FALSE;
+
+
+NET "pop" LOC = "M4";  # Bank = 0, Signal name = BTN2
+NET "push" LOC = "C11"; # Bank = 2, Signal name = BTN1
+NET "rst" LOC = "G12"; # Bank = 0, Signal name = BTN0
+
+
+# Pin assignment for SWs
+NET "data_in<3>" LOC = "B4";  # Bank = 3, Signal name = SW3
+NET "data_in<2>" LOC = "K3";  # Bank = 3, Signal name = SW2
+NET "data_in<1>" LOC = "L3";  # Bank = 3, Signal name = SW1
+NET "data_in<0>" LOC = "P11";  # Bank = 2, Signal name = SW0
+
+
+# Pin assignment for LEDs
+NET "almost_full" LOC = "G1" ; # Bank = 3, Signal name = LD7
+NET "almost_empty" LOC = "P4" ; # Bank = 2, Signal name = LD6
+NET "full" LOC = "N4" ;  # Bank = 2, Signal name = LD5
+NET "empty" LOC = "N5" ;  # Bank = 2, Signal name = LD4
+
+NET "data_out<3>" LOC = "P6" ; # Bank = 2, Signal name = LD3
+NET "data_out<2>" LOC = "P7" ; # Bank = 3, Signal name = LD2
+NET "data_out<1>" LOC = "M11" ; # Bank = 2, Signal name = LD1
+NET "data_out<0>" LOC = "M5" ;  # Bank = 2, Signal name = LD0
