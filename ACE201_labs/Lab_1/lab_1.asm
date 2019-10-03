@@ -1,25 +1,55 @@
 .data
-    out_string: 
-            .asciiz "\nHello, World! \n"
-    input_string:
-            .word 4 #4 bytes address in memory of input_string
-    
+
+	out_string: .asciiz "\n Hello World!\n"
+	string1: .asciiz "Enter text here: "
+	string2: .asciiz "\nHello "
+	string3: .asciiz " World!"
+	userInput: .space 1023
+
 .text
-    main:
-        la $a0, out_string #load the address of out_string into a0 register
-        li $v0, 4 #load op-code '4', for printing into v0 register
-        syscall #call it
 
-        la $a0, input_string #loads the memory input into a0
-        li $v0, 8 #loads op-code 8 for reding input
-        syscall
+	main:
+		#PRINT "HELLO, WORLD!"
+		li $v0, 4 #load op-code 4 for printing out string
+		la $a0, out_string #load out_string insto a0 register
+		syscall #print it (takes args from a0 register)
+		
+		#Prompt User for input
+		li $v0, 4
+		la $a0, string1
+		syscall
 
-        la $a0, out_string
-        li $v0, 4
-        syscall
+		#Get Input from User:
+		li $v0, 8 #Load op-code 8 for readind a string
+		la $a0, userInput #store string into userInput
+		li $a1, 1023 #load size as well 
+		syscall
+		
 
-        la $a0, input_string
-        syscall
+		#Displaying Hello + userInput
+		li $v0, 4
+		la $a0, string2
+		syscall
 
-        li $v0, 10 #loads op-code 10 for terminating the program
-        syscall
+    		li $a2, 0 #index = 0
+	loop:
+    		lbu $a3, userInput($a2)  #loads the first byte of userInput into a3
+		addiu $a2, $a2, 1 #index = index + 1 (no overflow)
+		bnez $a3, loop    #bne $a3, $0, Loop if byte == \0 else calls loop again
+    		beq $a1, $a2, skip  #if index is "a1" bytes long then there is no \n, so we skip
+    		subiu $a2, $a2, 2    #remove the last character (x2 4-bytes)
+    		sb $0, userInput($a2) #substitude last character with \0 
+	skip:
+    		#Displaying userInput
+		li $v0, 4
+		la $a0, userInput
+		syscall
+
+		#Displaying World + string3
+		li $v0, 4
+		la $a0, string3
+		syscall
+
+		#Exiting
+		li $v0, 10 #op-code 10 for terminating
+		syscall
