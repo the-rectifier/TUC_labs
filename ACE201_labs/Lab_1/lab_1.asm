@@ -31,14 +31,15 @@
 		la $a0, string2
 		syscall
 
-    		li $a2, 0 #index = 0
+    	li $a2, 0 #index = 0
+		li $t0, 2
 	loop:
-    		lbu $a3, userInput($a2)  #loads the first byte of userInput into a3
+    	lb $a3, userInput($a2)  #loads the first byte of userInput into a3
 		addiu $a2, $a2, 1 #index = index + 1 (no overflow)
-		bnez $a3, loop    #bne $a3, $0, Loop if byte == \0 else calls loop again
-    		beq $a1, $a2, skip  #if index is "a1" bytes long then there is no \n, so we skip
-    		subiu $a2, $a2, 2    #remove the last character (x2 4-bytes)
-    		sb $0, userInput($a2) #substitude last character with \0 
+		bne $a3, $0, loop #if byte == \0 else calls loop again
+    	beq $a1, $a2, skip  #if index is "a1" bytes long then there is no \n, so we skip
+		subu $a2, $a2, $t0 #we loaded 2 into t0 and we substract them (no pseudo instruction)
+    	sb $0, userInput($a2) #substitude last character with \0 
 	skip:
     		#Displaying userInput
 		li $v0, 4
