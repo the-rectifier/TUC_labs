@@ -33,15 +33,17 @@
 
     	li $a2, 0 #index = 0
 		li $t0, 2
+
 	loop:
-    		lb $a3, userInput($a2)  #loads the first byte of userInput into a3
-		addiu $a2, $a2, 1 #index = index + 1 (no overflow)
-		bne $a3, $0, loop #if byte == \0 else calls loop again
-    		beq $a1, $a2, skip  #if index is "a1" bytes long then there is no \n, so we skip
-		subu $a2, $a2, $t0 #we loaded 2 into t0 and we substract them (no pseudo instruction)
-    		sb $0, userInput($a2) #substitude last character with \0 
+    	lb $a3, userInput($a2)  #loads the first byte of userInput into a3
+		addi $a2, $a2, 1 #index = index + 1 (no overflow)
+		bne $a3, $0, loop #if byte != \0 else calls loop again
+    	beq $a1, $a2, skip  #if index is "a1" bytes long then there is no \n, so we skip
+		subu $a2, $a2, $t0 #we are 2 indexes over newLine so we backtrack 2  
+    	sb $0, userInput($a2) #substitude last character with \0
+
 	skip:
-    		#Displaying userInput
+    	#Displaying userInput
 		li $v0, 4
 		la $a0, userInput
 		syscall

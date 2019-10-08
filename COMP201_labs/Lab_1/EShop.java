@@ -3,7 +3,6 @@ import java.util.*;
 
 public class EShop
 {
-
     private Vector <User> users;
 
     public void addusr(User u)
@@ -14,10 +13,10 @@ public class EShop
     public EShop()
     {
         this.users = new Vector<User>();
-        addusr(new Client("Client_1", "Login_1", "Pass_1"));
-        addusr(new Admin("Admin_1", "Login__1", "Pass__1"));
+        addusr(new Client("Client_1", "User1", "User1"));
+        addusr(new Admin("Admin_1", "Admin1", "Admin1"));
     }
-    public static void main(String[] args) 
+    public static void main(String[] args)
     {
         StandardInputRead reader = new StandardInputRead();
         EShop shop = new EShop();
@@ -29,7 +28,22 @@ public class EShop
         }
         else if(x == 2)
         {
-            shop.Authenticate();
+            String login = reader.readString("Insert login:");
+            String password = reader.readString("Insert password:");
+            try{
+                User userLogged = shop.authenticate(login, password);
+                userLogged.printMenu();
+            }
+            catch (EshopAuthException e)
+            {
+                System.out.println(e.getLogin()+ " " + e.getMessage());
+            }
+            /*
+            if (userLogged != null)
+				userLogged.printMenu();
+			else
+                System.out.println("Login Error");
+                */
         }
 
     }
@@ -50,19 +64,12 @@ public class EShop
         addusr(new Client(x,y,z));
     }
 
-    public void Authenticate()
+    public User authenticate(String login, String password) throws EshopAuthException
     {
-        int i;
-        StandardInputRead reader = new StandardInputRead();
-        String user_name = reader.readString("Enter Username: ");
-        String pass = reader.readString("enter Pass: ");
-
-        for(i=0;i<users.size();i++)
-        {
-            if(users.get(i).getLogin().equals(user_name))
-            {
-                System.out.println(users.get(i).CheckUserLogin(user_name, pass));
-            }
-        }
-    }
+		for (int i=0 ; i<users.size();i++) {
+			if (users.elementAt(i).CheckUserLogin(login, password))
+				return users.elementAt(i);
+		}
+		throw new EshopAuthException("User could not be authenticated", login);
+	}
 }
