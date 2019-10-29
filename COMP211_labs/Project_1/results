@@ -1,0 +1,95 @@
+#!/bin/bash
+score=()
+matches=()
+teams=()
+touch out_teams
+rm -f out_teams
+
+while IFS=':' read -r x y;
+do 
+    matches+=($x)
+    score+=($y)
+done < $1
+
+IFS='-' read -ra teams <<< "${matches[@]}"
+unique_teams=($(echo "${teams[@]}" | tr ' ' '\n' | sort -u | tr '\n' ' '))
+
+declare -a points=( $(for ((i=0;i<${#unique_teams[@]};++i)); do echo 0; done) )
+declare -a goals_put=( $(for ((i=0;i<${#unique_teams[@]};++i)); do echo 0; done) )
+declare -a goals_eat=( $(for ((i=0;i<${#unique_teams[@]};++i)); do echo 0; done) )
+#echo "${points[@]}"
+#echo "${goals_put[@]}"
+#echo "${goals_eat[@]}"
+
+for ((i=0;i<${#matches[@]};++i)); 
+do
+    winner=''
+    IFS='-' read -r hs as <<< "${score[$i]}"
+    IFS='-' read -r ht at <<< "${matches[$i]}"
+    #echo $ht $at $hs $as
+
+    for ((j=0;j<${#unique_teams[@]};++j)); 
+    do 
+        if [ "${ht}" == "${unique_teams[$j]}" ]
+        then
+            goals_put[$j]=$(("${goals_put[$j]} + ${hs}"))
+            goals_eat[$j]=$(("${goals_eat[$j]} + ${as}"))
+        elif [ "${at}" == "${unique_teams[$j]}" ]
+        then
+            goals_put[$j]=$(("${goals_put[$j]} + ${as}"))
+            goals_eat[$j]=$(("${goals_eat[$j]} + ${hs}"))
+        fi
+    done
+
+    if [ $hs -gt $as ] 
+    then
+        #echo "${ht} WINS"
+        winner=${ht}
+    elif [ $hs -lt $as ] 
+    then
+        winner=${at}
+        #echo "${at} WINS"
+    elif [ $hs -eq $as ] 
+    then
+        for ((j=0;j<${#unique_teams[@]};++j)); 
+        do 
+            if [ "${ht}" == "${unique_teams[$j]}" ]
+            then
+                points[$j]=$(("${points[$j]} + 1"))
+            elif [ "${at}" == "${unique_teams[$j]}" ]
+            then
+                points[$j]=$(("${points[$j]} + 1"))
+            fi
+        done
+    fi
+
+    for ((j=0;j<${#unique_teams[@]};++j)); 
+    do 
+        if [ "${winner}" == "${unique_teams[$j]}" ]
+        then
+            points[$j]=$(("${points[$j]} + 3"))
+            break
+        fi
+    done
+done
+
+for ((j=0;j<${#unique_teams[@]};++j)); 
+do 
+    echo -e "${unique_teams[$j]}\t${points[$j]}\t${goals_put[$j]}-${goals_eat[$j]}" >> out_teams
+done
+sort -k1 out_teams | sort -snrk2 > out_teams1
+rm -r out_teams
+i=1
+while IFS='\n' read -r line;
+do 
+    echo -e "$i.\t${line}"
+    i=$(($i+1))
+done < "out_teams1"
+rm -f out_teams1
+IFS=' '
+#echo ${points[@]}
+#echo ${unique_teams[@]}
+#echo ${goals_eat[@]}
+#echo ${goals_put[@]}
+#echo ${score[@]}
+#echo ${matches[@]}

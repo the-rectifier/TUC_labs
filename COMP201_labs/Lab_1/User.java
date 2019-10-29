@@ -1,4 +1,4 @@
-public abstract class User
+public abstract class User implements Storable
 {
     private String Name;
     private String Login;
@@ -29,10 +29,6 @@ public abstract class User
         this.Login = Login;
     }
 
-    public String getPasswd() {
-        return this.passwd;
-    }
-
     public void setPasswd(String passwd, String old_passwd) {
         
         if(old_passwd == this.passwd)
@@ -57,11 +53,6 @@ public abstract class User
         return this;
     }
 
-    public User passwd(String passwd) {
-        this.passwd = passwd;
-        return this;
-    }
-
     public boolean CheckUserLogin(String login, String passwd)
     {
         if(login.equals(this.Login) && passwd.equals(this.passwd))
@@ -80,8 +71,7 @@ public abstract class User
     public String toString() {
         return "{" +
             " Name='" + getName() + "'" +
-            ", Login='" + getLogin() + "'" +
-            ", passwd='" + getPasswd() + "'" +
+            ", Login='" + getLogin() +
             "}";
     }
 
@@ -90,7 +80,20 @@ public abstract class User
     {
         System.out.println("{" +
         " Name: " + this.getName() + 
-        ", Login: " + this.getLogin() + 
-        ", passwd: " + this.getPasswd() + "}");
+        ", Login: " + this.getLogin() +"}");
+    }
+
+    @Override
+    public String marshal()
+    {
+        return(this.Name+"|"+this.Login+"|"+this.passwd);
+    }
+
+    public void unMarshal(String data)
+    {
+        String[] tokens = data.split("|");
+        this.setName(tokens[1]);
+        this.setLogin(tokens[2]);
+        this.passwd = tokens[3];
     }
 }

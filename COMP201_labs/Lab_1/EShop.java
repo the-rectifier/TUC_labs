@@ -1,7 +1,7 @@
 import lib.StandardInputRead;
 import java.util.*;
 
-public class EShop
+public class EShop implements Storable
 {
     private Vector <User> users;
 
@@ -45,6 +45,10 @@ public class EShop
                 System.out.println("Login Error");
                 */
         }
+        else if(x==3)
+        {
+            System.out.println(shop.marshal());
+        }
 
     }
 
@@ -71,5 +75,37 @@ public class EShop
 				return users.elementAt(i);
 		}
 		throw new EshopAuthException("User could not be authenticated", login);
-	}
+    }
+    
+    public String marshal()
+    {
+        String data = "";
+        for(int i=0; i<users.size();i++)
+        {
+            data += users.get(i).marshal() + "\n";
+        }
+        return data;
+    }
+
+    public void unMarshal(String data)
+    {
+        User user;
+        for(int i=0; i<users.size();i++)
+        {
+            String[] lines = data.split("\n");
+            for(String t : lines)
+            {
+                String[] tokens = t.split("|");
+                if(tokens[0].equals("Client"))
+                {
+                    user = new Client();
+                }
+                else
+                {
+                    user = new Admin(); 
+                }
+            }
+            
+        }
+    }
 }
