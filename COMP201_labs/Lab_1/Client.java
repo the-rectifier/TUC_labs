@@ -1,20 +1,21 @@
 public class Client extends User
 {
-    public Client(String name, String login, String passwd)
-    {
-        super(name, login, passwd);
-    }
-    public Client()
-    {
+	public Client()
+	{
+	}
+	
+	public Client(String n, String l, String p)
+	{
+		super(n,l,p);
+	}
+	
+	public void printMenu()
+	{
+		System.out.println("This is Client");
+	}
 
-    }
-    public void printMenu()
-    {
-        System.out.println("Im user");
-    }
-
-    @Override
-    public String marshal() {
-        return("Client|" + super.marshal());
-    }
+	public String marshal()
+	{
+		return "client"+"|"+super.marshal();
+	}
 }

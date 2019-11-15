@@ -1,21 +1,20 @@
 public class Admin extends User
 {
-    public Admin(String name, String login, String passwd)
-    {
-        super(name, login, passwd);
-    }
-    public Admin()
-    {
-
-    }
-
-    public void printMenu()
-    {
-        System.out.println("IM SU!");
-    }
-
-    @Override
-    public String marshal() {
-        return("Admin|" + super.marshal());
-    }
+	public Admin()
+	{
+	}
+	public Admin(String n, String l, String p)
+	{
+		super(n,l,p);
+	}
+	
+	public void printMenu()
+	{
+		System.out.println("This is Admin");
+	}
+	@Override
+	public String marshal()
+	{
+		return "admin"+"|"+super.marshal();
+	}
 }
