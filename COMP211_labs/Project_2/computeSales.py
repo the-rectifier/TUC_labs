@@ -30,7 +30,7 @@ def GetAfmItemSum(afm):
     try:
         print_items,print_totals = sortem(print_items,print_totals)
         for i in range(0, len(print_items)):
-            print(print_items[i], print_totals[i])
+            print(print_items[i],"{0:.2f}".format(print_totals[i]))
     except ValueError as e:
         pass
     menu()
@@ -50,7 +50,7 @@ def GetItemSum(item):
         menu()
     afms,price = sortem(afms,price)
     for i in range(0,len(afms)):
-        print(afms[i], price[i])
+        print(afms[i], "{0:.2f}".format(price[i]))
     menu()
 
 def readfile():
@@ -72,7 +72,16 @@ def process(filename):
     #start_time = time.time()
     while line != '':
         if line[0] == '-':
-            bad_rec = False
+            for l in line.strip("\n"):
+                if l != '-':
+                    bad_rec = True
+                    honey_pot = 0
+                    items = []
+                    items_price = []
+                    #line = f.readline()
+                    break
+                else:
+                    bad_rec = False
             line = f.readline()
         elif line[:3] == "ΑΦΜ" and not bad_rec:
             chunk = line.split(" ")
@@ -112,6 +121,14 @@ def process(filename):
                 items = []
                 items_price = []
                 continue
+            for l in line.strip("\n"):
+                if l != '-':
+                    bad_rec = True
+                    honey_pot = 0
+                    items = []
+                    items_price = []
+                    line = f.readline()
+                    break
             if(honey_pot != grand_total):
                 #line = f.readline()
                 bad_rec = True
@@ -124,7 +141,8 @@ def process(filename):
             #        pot += items_price[items.index(item)]
             
             #items,items_price = sortem(items,items_price)
-            pushem(afm,items,items_price)
+            if not bad_rec:
+                pushem(afm,items,items_price)
             honey_pot = 0
             items = []
             items_price = []
@@ -196,7 +214,7 @@ def getItem():
 def menu():
     opts = {1:readfile, 2:getItem, 3:getAfm}
     #for item in all_afms:
-    #    print("Key : {} , Value : {}".format(item,all_afms[item]))
+        #print("Key : {} , Value : {}".format(item,all_afms[item]))
     print("1.) Read New Input File")
     print("2.) Print Statistics For Specific Product")
     print("3.) Print Statistics For Specific AFM")
