@@ -1,6 +1,6 @@
 all: remoteServer remoteClient
 
-server: remoteServer.c 
+remoteServer: remoteServer.c 
 	gcc -o remoteServer remoteServer.c
 
 remoteClient: remoteClient.c
