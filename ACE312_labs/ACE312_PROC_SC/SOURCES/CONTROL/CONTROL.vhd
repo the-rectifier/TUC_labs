@@ -28,9 +28,9 @@ Op_code <= Instr(31 downto 26);
 -- 01 -> Sign Extend << 2
 -- 10 -> Zfill
 -- 11 -> Zfill << 16 (lui)
-ImmExt <= "10" when (Op_code = "111001") else
+ImmExt <= "10" when (Op_code = "110010" or Op_code = "110011") else
 			"01" when (Op_code = "000000" or Op_code = "000001" or Op_code="111111") else
-			"00" when (Op_code = "110010" or Op_code = "110011" or Op_code = "111000" or Op_code = "110000" or Op_code = "000011" or Op_code = "011111" or Op_code = "001111" or Op_code = "000111" ) else
+			"00" when (Op_code = "111000" or Op_code = "110000" or Op_code = "000011" or Op_code = "011111" or Op_code = "001111" or Op_code = "000111" ) else
 			"11" when (Op_code = "111001") else
 			"10";
 
