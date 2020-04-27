@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="DATAPATH_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="DATAPATH_tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="366666fs"></ZoomStartTime>
+      <ZoomEndTime time="1366667fs"></ZoomEndTime>
+      <Cursor1Time time="985416fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="175"></NameColumnWidth>
+      <ValueColumnWidth column_width="106"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="60" />
+   <wvobject fp_name="/DATAPATH_tb/Clk" type="logic">
+      <obj_property name="ElementShortName">Clk</obj_property>
+      <obj_property name="ObjectShortName">Clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/Rst" type="logic">
+      <obj_property name="ElementShortName">Rst</obj_property>
+      <obj_property name="ObjectShortName">Rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/ByteOp" type="logic">
+      <obj_property name="ElementShortName">ByteOp</obj_property>
+      <obj_property name="ObjectShortName">ByteOp</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/Mem_We" type="logic">
+      <obj_property name="ElementShortName">Mem_We</obj_property>
+      <obj_property name="ObjectShortName">Mem_We</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/MM_Dout" type="array">
+      <obj_property name="ElementShortName">MM_Dout[31:0]</obj_property>
+      <obj_property name="ObjectShortName">MM_Dout[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/MM_Addr" type="array">
+      <obj_property name="ElementShortName">MM_Addr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">MM_Addr[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/MM_We" type="logic">
+      <obj_property name="ElementShortName">MM_We</obj_property>
+      <obj_property name="ObjectShortName">MM_We</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/MM_Din" type="array">
+      <obj_property name="ElementShortName">MM_Din[31:0]</obj_property>
+      <obj_property name="ObjectShortName">MM_Din[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/uut/inner_RF_A" type="array">
+      <obj_property name="ElementShortName">inner_RF_A[31:0]</obj_property>
+      <obj_property name="ObjectShortName">inner_RF_A[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/uut/inner_RF_B" type="array">
+      <obj_property name="ElementShortName">inner_RF_B[31:0]</obj_property>
+      <obj_property name="ObjectShortName">inner_RF_B[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/uut/decode/rs" type="array">
+      <obj_property name="ElementShortName">rs[4:0]</obj_property>
+      <obj_property name="ObjectShortName">rs[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/uut/decode/rt" type="array">
+      <obj_property name="ElementShortName">rt[4:0]</obj_property>
+      <obj_property name="ObjectShortName">rt[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/uut/decode/rd" type="array">
+      <obj_property name="ElementShortName">rd[4:0]</obj_property>
+      <obj_property name="ObjectShortName">rd[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/uut/just_do_it/Immed" type="array">
+      <obj_property name="ElementShortName">Immed[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Immed[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/uut/inner_ALU_OUT" type="array">
+      <obj_property name="ElementShortName">inner_ALU_OUT[31:0]</obj_property>
+      <obj_property name="ObjectShortName">inner_ALU_OUT[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/ALU_B_sel" type="logic">
+      <obj_property name="ElementShortName">ALU_B_sel</obj_property>
+      <obj_property name="ObjectShortName">ALU_B_sel</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/ALU_Func" type="array">
+      <obj_property name="ElementShortName">ALU_Func[3:0]</obj_property>
+      <obj_property name="ObjectShortName">ALU_Func[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/ALU_z" type="logic">
+      <obj_property name="ElementShortName">ALU_z</obj_property>
+      <obj_property name="ObjectShortName">ALU_z</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/PC_Sel" type="logic">
+      <obj_property name="ElementShortName">PC_Sel</obj_property>
+      <obj_property name="ObjectShortName">PC_Sel</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/PC_LD" type="logic">
+      <obj_property name="ElementShortName">PC_LD</obj_property>
+      <obj_property name="ObjectShortName">PC_LD</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/PC" type="array">
+      <obj_property name="ElementShortName">PC[31:0]</obj_property>
+      <obj_property name="ObjectShortName">PC[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/RF_WE" type="logic">
+      <obj_property name="ElementShortName">RF_WE</obj_property>
+      <obj_property name="ObjectShortName">RF_WE</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/RF_WD_Sel" type="logic">
+      <obj_property name="ElementShortName">RF_WD_Sel</obj_property>
+      <obj_property name="ObjectShortName">RF_WD_Sel</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/RF_B_Sel" type="logic">
+      <obj_property name="ElementShortName">RF_B_Sel</obj_property>
+      <obj_property name="ObjectShortName">RF_B_Sel</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/ImmExt" type="array">
+      <obj_property name="ElementShortName">ImmExt[1:0]</obj_property>
+      <obj_property name="ObjectShortName">ImmExt[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/Instr" type="array">
+      <obj_property name="ElementShortName">Instr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Instr[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/stop_the_clock" type="other">
+      <obj_property name="ElementShortName">stop_the_clock</obj_property>
+      <obj_property name="ObjectShortName">stop_the_clock</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/clk_period" type="other">
+      <obj_property name="ElementShortName">clk_period</obj_property>
+      <obj_property name="ObjectShortName">clk_period</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/uut/decode/RF/Dout_0" type="array">
+      <obj_property name="ElementShortName">Dout_0[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Dout_0[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/uut/decode/RF/Dout_01" type="array">
+      <obj_property name="ElementShortName">Dout_01[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Dout_01[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/uut/decode/RF/Dout_02" type="array">
+      <obj_property name="ElementShortName">Dout_02[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Dout_02[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/uut/decode/RF/Dout_3" type="array">
+      <obj_property name="ElementShortName">Dout_3[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Dout_3[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/uut/decode/RF/Dout_4" type="array">
+      <obj_property name="ElementShortName">Dout_4[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Dout_4[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/uut/decode/RF/Dout_5" type="array">
+      <obj_property name="ElementShortName">Dout_5[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Dout_5[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/uut/decode/RF/Dout_6" type="array">
+      <obj_property name="ElementShortName">Dout_6[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Dout_6[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/uut/decode/RF/Dout_7" type="array">
+      <obj_property name="ElementShortName">Dout_7[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Dout_7[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/uut/decode/RF/Dout_8" type="array">
+      <obj_property name="ElementShortName">Dout_8[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Dout_8[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/uut/decode/RF/Dout_9" type="array">
+      <obj_property name="ElementShortName">Dout_9[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Dout_9[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/uut/decode/RF/Dout_10" type="array">
+      <obj_property name="ElementShortName">Dout_10[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Dout_10[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/uut/decode/RF/Dout_11" type="array">
+      <obj_property name="ElementShortName">Dout_11[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Dout_11[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/uut/decode/RF/Dout_12" type="array">
+      <obj_property name="ElementShortName">Dout_12[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Dout_12[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/uut/decode/RF/Dout_13" type="array">
+      <obj_property name="ElementShortName">Dout_13[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Dout_13[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/uut/decode/RF/Dout_14" type="array">
+      <obj_property name="ElementShortName">Dout_14[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Dout_14[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/uut/decode/RF/Dout_15" type="array">
+      <obj_property name="ElementShortName">Dout_15[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Dout_15[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/uut/decode/RF/Dout_16" type="array">
+      <obj_property name="ElementShortName">Dout_16[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Dout_16[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/uut/decode/RF/Dout_17" type="array">
+      <obj_property name="ElementShortName">Dout_17[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Dout_17[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/uut/decode/RF/Dout_18" type="array">
+      <obj_property name="ElementShortName">Dout_18[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Dout_18[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/uut/decode/RF/Dout_19" type="array">
+      <obj_property name="ElementShortName">Dout_19[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Dout_19[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/uut/decode/RF/Dout_20" type="array">
+      <obj_property name="ElementShortName">Dout_20[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Dout_20[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/uut/decode/RF/Dout_21" type="array">
+      <obj_property name="ElementShortName">Dout_21[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Dout_21[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/uut/decode/RF/Dout_22" type="array">
+      <obj_property name="ElementShortName">Dout_22[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Dout_22[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/uut/decode/RF/Dout_23" type="array">
+      <obj_property name="ElementShortName">Dout_23[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Dout_23[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/uut/decode/RF/Dout_24" type="array">
+      <obj_property name="ElementShortName">Dout_24[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Dout_24[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/uut/decode/RF/Dout_25" type="array">
+      <obj_property name="ElementShortName">Dout_25[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Dout_25[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/uut/decode/RF/Dout_26" type="array">
+      <obj_property name="ElementShortName">Dout_26[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Dout_26[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/uut/decode/RF/Dout_27" type="array">
+      <obj_property name="ElementShortName">Dout_27[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Dout_27[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/uut/decode/RF/Dout_28" type="array">
+      <obj_property name="ElementShortName">Dout_28[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Dout_28[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/uut/decode/RF/Dout_29" type="array">
+      <obj_property name="ElementShortName">Dout_29[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Dout_29[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/uut/decode/RF/Dout_30" type="array">
+      <obj_property name="ElementShortName">Dout_30[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Dout_30[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DATAPATH_tb/uut/decode/RF/Dout_31" type="array">
+      <obj_property name="ElementShortName">Dout_31[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Dout_31[31:0]</obj_property>
+   </wvobject>
+</wave_config>
