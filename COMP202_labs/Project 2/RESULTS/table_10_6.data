@@ -1,0 +1,23 @@
+Array Based BST:
+	AVG Comparisons per insertion: 24.36
+	Full Insertion Time: 18903.55
+	AVG Comparisons per Search: None
+	Full Search Time: None
+	AVG Comparisons per Ranged Search K=100: 186.01
+	AVG Comparisons per Ranged Search K=1000: 12419.16
+---------------------------------------------------------------
+Dynamically Allocated BST:
+	AVG Comparisons per insertion: 24.36
+	Full Insertion Time: 25699.16
+	AVG Comparisons per Search: None
+	Full Search Time: None
+	AVG Comparisons per Ranged Search K=100: 128.67
+	AVG Comparisons per Ranged Search K=1000: 11109.36
+---------------------------------------------------------------
+Sorted Array:
+	AVG Comparisons per insertion: N/A
+	Full Insertion Time: N/A
+	AVG Comparisons per Search: None
+	Full Search Time: None
+	AVG Comparisons per Ranged Search K=100: 114.94
+	AVG Comparisons per Ranged Search K=1000: 1010.2

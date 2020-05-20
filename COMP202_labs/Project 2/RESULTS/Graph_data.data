@@ -1,0 +1,302 @@
+For each file respectively: 
+
+For 10 elements: 
+Array Based BST: 
+	Avg Comparisons per Insertions: 2.9
+	Full Insertion Time: 0.03
+	Avg Comparisons per Search: 6.06
+	Full Search Time: 0.25
+	Avg Comparisons per Ranged Search K=100 0.04
+	Avg Comparisons per Ranged Search K=1000 0.12
+------------------------------------------------------------
+Dynamically Allocated BST: 
+	Avg Comparisons per Insertions: 2.9
+	Full Insertion Time: 0.05
+	Avg Comparisons per Search: 5.82
+	Full Search Time: 0.33
+	Avg Comparisons per Ranged Search K=100 0.06
+	Avg Comparisons per Ranged Search K=1000 0.05
+------------------------------------------------------------
+Sorted Array: 
+	Avg Comparisons per Insertions: N/A
+	Full Insertion Time: N/A
+	Avg Comparisons per Search: 2.98
+	Full Search Time: 0.31
+	Avg Comparisons per Ranged Search K=100 2.97
+	Avg Comparisons per Ranged Search K=1000 3.0
+*******************************************************************
+For 50 elements: 
+Array Based BST: 
+	Avg Comparisons per Insertions: 4.5
+	Full Insertion Time: 0.23
+	Avg Comparisons per Search: 7.75
+	Full Search Time: 0.72
+	Avg Comparisons per Ranged Search K=100 0.08
+	Avg Comparisons per Ranged Search K=1000 0.08
+------------------------------------------------------------
+Dynamically Allocated BST: 
+	Avg Comparisons per Insertions: 4.5
+	Full Insertion Time: 0.39
+	Avg Comparisons per Search: 7.34
+	Full Search Time: 0.89
+	Avg Comparisons per Ranged Search K=100 0.04
+	Avg Comparisons per Ranged Search K=1000 0.09
+------------------------------------------------------------
+Sorted Array: 
+	Avg Comparisons per Insertions: N/A
+	Full Insertion Time: N/A
+	Avg Comparisons per Search: 5.0
+	Full Search Time: 0.58
+	Avg Comparisons per Ranged Search K=100 5.0
+	Avg Comparisons per Ranged Search K=1000 5.02
+*******************************************************************
+For 100 elements: 
+Array Based BST: 
+	Avg Comparisons per Insertions: 6.22
+	Full Insertion Time: 0.49
+	Avg Comparisons per Search: 8.84
+	Full Search Time: 0.35
+	Avg Comparisons per Ranged Search K=100 0.06
+	Avg Comparisons per Ranged Search K=1000 0.2
+------------------------------------------------------------
+Dynamically Allocated BST: 
+	Avg Comparisons per Insertions: 6.22
+	Full Insertion Time: 0.57
+	Avg Comparisons per Search: 8.73
+	Full Search Time: 0.43
+	Avg Comparisons per Ranged Search K=100 0.07
+	Avg Comparisons per Ranged Search K=1000 0.09
+------------------------------------------------------------
+Sorted Array: 
+	Avg Comparisons per Insertions: N/A
+	Full Insertion Time: N/A
+	Avg Comparisons per Search: 6.0
+	Full Search Time: 0.52
+	Avg Comparisons per Ranged Search K=100 6.0
+	Avg Comparisons per Ranged Search K=1000 6.11
+*******************************************************************
+For 1000 elements: 
+Array Based BST: 
+	Avg Comparisons per Insertions: 11.97
+	Full Insertion Time: 11.23
+	Avg Comparisons per Search: 14.66
+	Full Search Time: 0.74
+	Avg Comparisons per Ranged Search K=100 0.36
+	Avg Comparisons per Ranged Search K=1000 0.09
+------------------------------------------------------------
+Dynamically Allocated BST: 
+	Avg Comparisons per Insertions: 11.97
+	Full Insertion Time: 12.35
+	Avg Comparisons per Search: 15.62
+	Full Search Time: 0.99
+	Avg Comparisons per Ranged Search K=100 0.14
+	Avg Comparisons per Ranged Search K=1000 1.47
+------------------------------------------------------------
+Sorted Array: 
+	Avg Comparisons per Insertions: N/A
+	Full Insertion Time: N/A
+	Avg Comparisons per Search: 9.0
+	Full Search Time: 0.73
+	Avg Comparisons per Ranged Search K=100 9.07
+	Avg Comparisons per Ranged Search K=1000 9.64
+*******************************************************************
+For 1500 elements: 
+Array Based BST: 
+	Avg Comparisons per Insertions: 11.46
+	Full Insertion Time: 25.43
+	Avg Comparisons per Search: 14.55
+	Full Search Time: 0.61
+	Avg Comparisons per Ranged Search K=100 0.14
+	Avg Comparisons per Ranged Search K=1000 0.61
+------------------------------------------------------------
+Dynamically Allocated BST: 
+	Avg Comparisons per Insertions: 11.46
+	Full Insertion Time: 23.14
+	Avg Comparisons per Search: 14.45
+	Full Search Time: 0.91
+	Avg Comparisons per Ranged Search K=100 0.17
+	Avg Comparisons per Ranged Search K=1000 0.14
+------------------------------------------------------------
+Sorted Array: 
+	Avg Comparisons per Insertions: N/A
+	Full Insertion Time: N/A
+	Avg Comparisons per Search: 9.92
+	Full Search Time: 0.71
+	Avg Comparisons per Ranged Search K=100 10.06
+	Avg Comparisons per Ranged Search K=1000 11.37
+*******************************************************************
+For 5000 elements: 
+Array Based BST: 
+	Avg Comparisons per Insertions: 14.57
+	Full Insertion Time: 63.35
+	Avg Comparisons per Search: 17.78
+	Full Search Time: 0.62
+	Avg Comparisons per Ranged Search K=100 0.18
+	Avg Comparisons per Ranged Search K=1000 2.33
+------------------------------------------------------------
+Dynamically Allocated BST: 
+	Avg Comparisons per Insertions: 14.57
+	Full Insertion Time: 57.1
+	Avg Comparisons per Search: 17.72
+	Full Search Time: 0.87
+	Avg Comparisons per Ranged Search K=100 0.16
+	Avg Comparisons per Ranged Search K=1000 2.12
+------------------------------------------------------------
+Sorted Array: 
+	Avg Comparisons per Insertions: N/A
+	Full Insertion Time: N/A
+	Avg Comparisons per Search: 11.61
+	Full Search Time: 1.06
+	Avg Comparisons per Ranged Search K=100 11.77
+	Avg Comparisons per Ranged Search K=1000 15.37
+*******************************************************************
+For 10000 elements: 
+Array Based BST: 
+	Avg Comparisons per Insertions: 15.73
+	Full Insertion Time: 166.59
+	Avg Comparisons per Search: 19.24
+	Full Search Time: 0.83
+	Avg Comparisons per Ranged Search K=100 0.72
+	Avg Comparisons per Ranged Search K=1000 3.94
+------------------------------------------------------------
+Dynamically Allocated BST: 
+	Avg Comparisons per Insertions: 15.73
+	Full Insertion Time: 122.68
+	Avg Comparisons per Search: 19.84
+	Full Search Time: 1.13
+	Avg Comparisons per Ranged Search K=100 0.6
+	Avg Comparisons per Ranged Search K=1000 9.25
+------------------------------------------------------------
+Sorted Array: 
+	Avg Comparisons per Insertions: N/A
+	Full Insertion Time: N/A
+	Avg Comparisons per Search: 12.52
+	Full Search Time: 0.99
+	Avg Comparisons per Ranged Search K=100 13.22
+	Avg Comparisons per Ranged Search K=1000 20.5
+*******************************************************************
+For 15000 elements: 
+Array Based BST: 
+	Avg Comparisons per Insertions: 15.96
+	Full Insertion Time: 259.02
+	Avg Comparisons per Search: 19.04
+	Full Search Time: 1.48
+	Avg Comparisons per Ranged Search K=100 0.98
+	Avg Comparisons per Ranged Search K=1000 16.03
+------------------------------------------------------------
+Dynamically Allocated BST: 
+	Avg Comparisons per Insertions: 15.96
+	Full Insertion Time: 197.28
+	Avg Comparisons per Search: 19.32
+	Full Search Time: 1.13
+	Avg Comparisons per Ranged Search K=100 1.04
+	Avg Comparisons per Ranged Search K=1000 6.5
+------------------------------------------------------------
+Sorted Array: 
+	Avg Comparisons per Insertions: N/A
+	Full Insertion Time: N/A
+	Avg Comparisons per Search: 13.0
+	Full Search Time: 1.08
+	Avg Comparisons per Ranged Search K=100 14.02
+	Avg Comparisons per Ranged Search K=1000 24.96
+*******************************************************************
+For 100000 elements: 
+Array Based BST: 
+	Avg Comparisons per Insertions: 19.89
+	Full Insertion Time: 1728.01
+	Avg Comparisons per Search: 21.9
+	Full Search Time: 1.1
+	Avg Comparisons per Ranged Search K=100 5.31
+	Avg Comparisons per Ranged Search K=1000 169.42
+------------------------------------------------------------
+Dynamically Allocated BST: 
+	Avg Comparisons per Insertions: 19.89
+	Full Insertion Time: 1763.01
+	Avg Comparisons per Search: 23.24
+	Full Search Time: 1.51
+	Avg Comparisons per Ranged Search K=100 5.66
+	Avg Comparisons per Ranged Search K=1000 128.7
+------------------------------------------------------------
+Sorted Array: 
+	Avg Comparisons per Insertions: N/A
+	Full Insertion Time: N/A
+	Avg Comparisons per Search: 15.97
+	Full Search Time: 1.19
+	Avg Comparisons per Ranged Search K=100 23.46
+	Avg Comparisons per Ranged Search K=1000 108.6
+*******************************************************************
+For 500000 elements: 
+Array Based BST: 
+	Avg Comparisons per Insertions: 22.78
+	Full Insertion Time: 11598.05
+	Avg Comparisons per Search: 25.18
+	Full Search Time: 1.54
+	Avg Comparisons per Ranged Search K=100 50.27
+	Avg Comparisons per Ranged Search K=1000 2557.49
+------------------------------------------------------------
+Dynamically Allocated BST: 
+	Avg Comparisons per Insertions: 22.78
+	Full Insertion Time: 12205.71
+	Avg Comparisons per Search: 25.43
+	Full Search Time: 1.88
+	Avg Comparisons per Ranged Search K=100 33.01
+	Avg Comparisons per Ranged Search K=1000 2782.84
+------------------------------------------------------------
+Sorted Array: 
+	Avg Comparisons per Insertions: N/A
+	Full Insertion Time: N/A
+	Avg Comparisons per Search: 17.76
+	Full Search Time: 3.41
+	Avg Comparisons per Ranged Search K=100 64.37
+	Avg Comparisons per Ranged Search K=1000 512.69
+*******************************************************************
+For 750000 elements: 
+Array Based BST: 
+	Avg Comparisons per Insertions: 23.51
+	Full Insertion Time: 16617.46
+	Avg Comparisons per Search: 24.83
+	Full Search Time: 1.5
+	Avg Comparisons per Ranged Search K=100 77.81
+	Avg Comparisons per Ranged Search K=1000 5544.32
+------------------------------------------------------------
+Dynamically Allocated BST: 
+	Avg Comparisons per Insertions: 23.51
+	Full Insertion Time: 20124.56
+	Avg Comparisons per Search: 25.11
+	Full Search Time: 2.67
+	Avg Comparisons per Ranged Search K=100 115.03
+	Avg Comparisons per Ranged Search K=1000 5813.4
+------------------------------------------------------------
+Sorted Array: 
+	Avg Comparisons per Insertions: N/A
+	Full Insertion Time: N/A
+	Avg Comparisons per Search: 18.52
+	Full Search Time: 1.75
+	Avg Comparisons per Ranged Search K=100 89.64
+	Avg Comparisons per Ranged Search K=1000 756.73
+*******************************************************************
+For 1000000 elements: 
+Array Based BST: 
+	Avg Comparisons per Insertions: 24.36
+	Full Insertion Time: 21340.08
+	Avg Comparisons per Search: 26.21
+	Full Search Time: 1.47
+	Avg Comparisons per Ranged Search K=100 185.67
+	Avg Comparisons per Ranged Search K=1000 10405.77
+------------------------------------------------------------
+Dynamically Allocated BST: 
+	Avg Comparisons per Insertions: 24.36
+	Full Insertion Time: 25861.5
+	Avg Comparisons per Search: 25.51
+	Full Search Time: 1.88
+	Avg Comparisons per Ranged Search K=100 149.18
+	Avg Comparisons per Ranged Search K=1000 10591.07
+------------------------------------------------------------
+Sorted Array: 
+	Avg Comparisons per Insertions: N/A
+	Full Insertion Time: N/A
+	Avg Comparisons per Search: 18.53
+	Full Search Time: 1.24
+	Avg Comparisons per Ranged Search K=100 114.72
+	Avg Comparisons per Ranged Search K=1000 1011.45
+*******************************************************************
