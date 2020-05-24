@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="DECSTAGE_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="DECSTAGE_tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="1000001fs"></ZoomEndTime>
+      <Cursor1Time time="200000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="253"></NameColumnWidth>
+      <ValueColumnWidth column_width="268"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="14" />
+   <wvobject fp_name="/DECSTAGE_tb/Clk" type="logic">
+      <obj_property name="ElementShortName">Clk</obj_property>
+      <obj_property name="ObjectShortName">Clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DECSTAGE_tb/Rst" type="logic">
+      <obj_property name="ElementShortName">Rst</obj_property>
+      <obj_property name="ObjectShortName">Rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DECSTAGE_tb/Instr" type="array">
+      <obj_property name="ElementShortName">Instr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Instr[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DECSTAGE_tb/RF_WE" type="logic">
+      <obj_property name="ElementShortName">RF_WE</obj_property>
+      <obj_property name="ObjectShortName">RF_WE</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DECSTAGE_tb/Data" type="array">
+      <obj_property name="ElementShortName">Data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Data[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DECSTAGE_tb/RD_in" type="array">
+      <obj_property name="ElementShortName">RD_in[4:0]</obj_property>
+      <obj_property name="ObjectShortName">RD_in[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DECSTAGE_tb/Immed" type="array">
+      <obj_property name="ElementShortName">Immed[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Immed[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DECSTAGE_tb/RF_A" type="array">
+      <obj_property name="ElementShortName">RF_A[31:0]</obj_property>
+      <obj_property name="ObjectShortName">RF_A[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DECSTAGE_tb/RF_B" type="array">
+      <obj_property name="ElementShortName">RF_B[31:0]</obj_property>
+      <obj_property name="ObjectShortName">RF_B[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DECSTAGE_tb/RD_OUT" type="array">
+      <obj_property name="ElementShortName">RD_OUT[4:0]</obj_property>
+      <obj_property name="ObjectShortName">RD_OUT[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DECSTAGE_tb/RS_OUT" type="array">
+      <obj_property name="ElementShortName">RS_OUT[4:0]</obj_property>
+      <obj_property name="ObjectShortName">RS_OUT[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DECSTAGE_tb/RT_OUT" type="array">
+      <obj_property name="ElementShortName">RT_OUT[4:0]</obj_property>
+      <obj_property name="ObjectShortName">RT_OUT[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DECSTAGE_tb/stop_the_clock" type="other">
+      <obj_property name="ElementShortName">stop_the_clock</obj_property>
+      <obj_property name="ObjectShortName">stop_the_clock</obj_property>
+   </wvobject>
+   <wvobject fp_name="/DECSTAGE_tb/clk_period" type="other">
+      <obj_property name="ElementShortName">clk_period</obj_property>
+      <obj_property name="ObjectShortName">clk_period</obj_property>
+   </wvobject>
+</wave_config>
