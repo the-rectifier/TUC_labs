@@ -16,7 +16,7 @@ entity HAZARD_DETECT is
 		
   		PC_LD : out std_logic;
   		-- flush signal
-  		ultra_low_guttal_like_the_one_CJ_did_in_this_http_www_youtube_com_watch_v_iIkDH0985Fc_at_3_mins_and_15_sec_he_left_the_water_go_down_in_the_drain : out std_logic;
+  		ultra_low_guttural_like_the_one_CJ_did_in_this_http_www_youtube_com_watch_v_iIkDH0985Fc_at_3_mins_and_15_sec_he_left_the_water_go_down_in_the_drain : out std_logic;
   		IFID_WE : out std_logic);
 end HAZARD_DETECT;
 
@@ -36,6 +36,6 @@ begin
 	-- half the IF_ID (dont write)
 	IFID_WE <= cont;
 	-- flush the pipe 
-	ultra_low_guttal_like_the_one_CJ_did_in_this_http_www_youtube_com_watch_v_iIkDH0985Fc_at_3_mins_and_15_sec_he_left_the_water_go_down_in_the_drain <= not cont;
+	ultra_low_guttural_like_the_one_CJ_did_in_this_http_www_youtube_com_watch_v_iIkDH0985Fc_at_3_mins_and_15_sec_he_left_the_water_go_down_in_the_drain <= not cont;
 
 end Behavioral;

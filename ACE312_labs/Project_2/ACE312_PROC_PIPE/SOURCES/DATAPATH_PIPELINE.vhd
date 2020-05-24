@@ -289,7 +289,7 @@ component  HAZARD_DETECT is
   		IFID_RT : in std_logic_vector(4 downto 0);
 
   		PC_LD : out std_logic;
-  		ultra_low_guttal_like_the_one_CJ_did_in_this_http_www_youtube_com_watch_v_iIkDH0985Fc_at_3_mins_and_15_sec_he_left_the_water_go_down_in_the_drain : out std_logic;
+  		ultra_low_guttural_like_the_one_CJ_did_in_this_http_www_youtube_com_watch_v_iIkDH0985Fc_at_3_mins_and_15_sec_he_left_the_water_go_down_in_the_drain : out std_logic;
   		IFID_WE : out std_logic);
 end component;  		
 			
@@ -304,7 +304,7 @@ begin
 										IFID_RS=>RS_IFID,
 										PC_LD=>PC_LD,
 										IFID_WE=>IFID_WE,
-										ultra_low_guttal_like_the_one_CJ_did_in_this_http_www_youtube_com_watch_v_iIkDH0985Fc_at_3_mins_and_15_sec_he_left_the_water_go_down_in_the_drain=>flush);
+										ultra_low_guttural_like_the_one_CJ_did_in_this_http_www_youtube_com_watch_v_iIkDH0985Fc_at_3_mins_and_15_sec_he_left_the_water_go_down_in_the_drain=>flush);
 										
 	
 	DATA_W <= MEM_DATA_MEMWB when RF_WD_Sel = '1' else R_DATA_MEMWB;
