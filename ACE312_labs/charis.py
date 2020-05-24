@@ -2,6 +2,7 @@
 # Author: Odysseas Stavrou 
 # Github: odysseassu@gmail.com
 import os
+import sys
 
 try:
     from bitstring import Bits
@@ -9,7 +10,7 @@ except ImportError as e:
     print(e)
     print("Attempting to install bitstring library")
     os.system("pip install bitstring --user")
-    from bitstring import Bits
+    os.execv(__file__, sys.argv)
 
 import sys
 import argparse
