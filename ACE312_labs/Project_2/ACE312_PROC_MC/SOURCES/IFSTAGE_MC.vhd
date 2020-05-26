@@ -1,7 +1,8 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
-
+-- removed +4 incrementor and any modules
+-- just a multiplexer and a plain reg
 entity IFSTAGE_MC is
 	 Port(  
 	 		PC_Sel : in std_logic;

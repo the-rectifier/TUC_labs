@@ -1,6 +1,8 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-
+-- add 2:1 multilexer to switch between RF_A and PC
+-- add 3:1 multiplexer to switch between RF_B +4 and Immed
+-- used for +4 the PC and PC(+4 already applies) + Immed when branched
 entity EXSTAGE is
 	Port (
 			PC : in std_logic_vector(31 downto 0);

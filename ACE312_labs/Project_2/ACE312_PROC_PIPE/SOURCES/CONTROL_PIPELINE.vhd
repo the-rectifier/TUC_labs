@@ -1,6 +1,7 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-
+-- testing was done in the SINGLE CYCLE 
+-- deprecated irrelevant signals like the extent function and the 2nd register selection moved to DECSTAGE
 entity CONTROL_PIPELINE is
 	Port (
 		Instr : in std_logic_vector(31 downto 0);
