@@ -249,7 +249,7 @@ public class Main {
                                 Vector<Double> avgBstI, Vector<Double> avgBstS, Vector<Double> avgBstD){
 
         try{
-            FileWriter writer = new FileWriter("graphs.m", false);
+            FileWriter writer = new FileWriter("graphs_1.m", false);
             BufferedWriter bufferedWriter = new BufferedWriter(writer);
             bufferedWriter.write("clear all;\n" +
                     "close;\n\n" +
