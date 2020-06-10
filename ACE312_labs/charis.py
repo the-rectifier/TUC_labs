@@ -24,7 +24,7 @@ def sign_extend(value, pos, bits=16):
         Bits(int=value, length=bits).bin
 
 
-ISE = {
+ISA = {
     "li": '111000',
     "lui": '111001',
     "addi": '110000',
@@ -50,7 +50,7 @@ ISE = {
     "rol": '111100',
     "ror": '111101'
 }
-ISE_D = {
+ISA_D = {
         '100000': 'R',
         '111000': 'li',
         '111001': 'lui',
@@ -96,14 +96,14 @@ def assembler(line):
             rd = bin(int(args[0].strip('r')))[2:].zfill(5)
             rs = bin(int(args[1].strip('r')))[2:].zfill(5)
             rt = bin(int(args[2].strip('r')))[2:].zfill(5)
-            return '100000' + rs + rd + rt + shamt + ISE.get(inst)
+            return '100000' + rs + rd + rt + shamt + ISA.get(inst)
         elif len(args) == 2:
             # not, sra, sll, srl, rol, ror
             # not r4 r5
             rt = '00000'
             rd = bin(int(args[0].strip('r')))[2:].zfill(5)
             rs = bin(int(args[1].strip('r')))[2:].zfill(5)
-            return '100000' + rs + rd + rt + shamt + ISE.get(inst)
+            return '100000' + rs + rd + rt + shamt + ISA.get(inst)
 
     elif inst in I_type:
         if len(args) == 1:
@@ -141,7 +141,7 @@ def assembler(line):
                 immed = sign_extend(int(args[2], 16), int(args[2], 16) >= 0)
             else:
                 immed = sign_extend(int(args[2]), int(args[2]) >= 0)
-        return ISE.get(inst) + rs + rd + immed
+        return ISA.get(inst) + rs + rd + immed
     else:
         print("Unsupported Instruction!")
         return
