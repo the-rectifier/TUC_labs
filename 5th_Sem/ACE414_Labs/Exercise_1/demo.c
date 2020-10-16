@@ -30,6 +30,7 @@ void OTP(){
     char * plaintext = NULL;
     char * ciphertext = NULL;
     char * text = NULL;
+    char * key = NULL;
 
 
     printf("[OTP] input: ");
@@ -39,20 +40,21 @@ void OTP(){
     text = sanitize(text);
     int key_size = strlen(text);
 
-    char key[key_size+1];
+    key = (char *)malloc(key_size+1);
 
     get_key(key, key_size);
 
-    ciphertext = encrypt(text, key);
+    ciphertext = encrypt_otp(text, key);
 
     printf("[OTP] encrypted: ");
     print_hex(ciphertext);
 
-    plaintext = dcrypt(ciphertext, key);
+    plaintext = decrypt_otp(ciphertext, key);
 
     printf("[OTP] decrypted: %s\n", plaintext);
     
     free(text);
+    free(key);
     free(plaintext);
     free(ciphertext);
 }
@@ -124,9 +126,8 @@ void caesar(){
     scanf("%d", &key);
     getchar();
     
-    key = key % CUSTOM_ALPHABET_LENGTH;
-    ciphertext = caesar_dew_it(text, key);
-    plaintext = caesar_dew_it(ciphertext, CUSTOM_ALPHABET_LENGTH - key);
+    ciphertext = caesar_encrypt(text, key);
+    plaintext = caesar_decrypt(ciphertext, key);
     printf("[Caesar] encrypt: %s\n", ciphertext);
     printf("[Caesar] decrypt: %s\n", plaintext);
 

@@ -24,7 +24,7 @@ void get_key(char * key_buffer, int key_length){
 /*
  * XORs each byte of plaintext with each byte of Key
  */
-char * encrypt(const char * plaintext, char * key){
+char * encrypt_otp(char * plaintext, char * key){
     char * ciphertext = (char *)malloc(strlen(key)+1);
     memset(ciphertext, 0, strlen(key)+1);
 
@@ -37,7 +37,7 @@ char * encrypt(const char * plaintext, char * key){
 /*
  * XORs each byte of plaintext with each byte of Key
  */
-char * dcrypt(const char * ciphertext, char * key){
+char * decrypt_otp(char * ciphertext, char * key){
     char * plaintext = (char *)malloc(strlen(key)+1);
     memset(plaintext, 0, strlen(key)+1);
 
@@ -52,16 +52,16 @@ char * dcrypt(const char * ciphertext, char * key){
  * 0-9A-Za-z
  * supports cyclic key 62 -> 0, 63 -> 1, etc.
  * Checks the remaining distance until the next valid set and subtracts them form the key
- * Because the maximum length can trancend all 3 sets we need to shift in stages, calculating 
+ * Because the maximum length can transcend all 3 sets we need to shift in stages, calculating 
  * the shift of the next stage as well.
  ! The same logic applies for all 3 sets
  ! The same code is used for decryption using the complement of the key.
  ! Ex: shifting "a" by 4 -> "e", shifting "e" by 22 -> "a" 
  */
-char * caesar_dew_it(const char * text, int key){
+char * caesar_encrypt(char * text, int key){
     char * ciphertext = (char *)malloc(strlen(text)+1);
     memset(ciphertext, 0, strlen(text) + 1);
-
+    key = key % CUSTOM_ALPHABET_LENGTH;
     int t_key;
     int diff;
 
@@ -74,7 +74,7 @@ char * caesar_dew_it(const char * text, int key){
                     diff = 'z' - text_char + 1;
                     t_key -= diff;
                     text_char = '0';
-                }else{
+                }else{ 
                     text_char += t_key;
                     t_key = 0;
                 }
@@ -107,6 +107,14 @@ char * caesar_dew_it(const char * text, int key){
 }
 
 /*
+ * Normalizes the Key and then gets its complement 
+ * Encrypting an already encrypted text with the complement results to the original
+ */
+char * caesar_decrypt(char * text, int key){
+    return caesar_encrypt(text, CUSTOM_ALPHABET_LENGTH - (key % CUSTOM_ALPHABET_LENGTH));
+}
+
+/*
  * Creates Keystream buffer for the vigenere cipher by repeating each byte of key until
  * msg_length is reached
  */
@@ -123,7 +131,7 @@ void pad_key(char * key, char * keystream, int msg_length){
 /*
  * Encrypts plaintext using the vigenere method and keystream
  */
-char * vigenere_crypt(const char * keystream, char * plaintext){
+char * vigenere_crypt(char * keystream, char * plaintext){
     char * ciphertext = (char *)malloc(strlen(plaintext)+1);
     memset(ciphertext, 0, strlen(plaintext)+1);
 
@@ -137,7 +145,7 @@ char * vigenere_crypt(const char * keystream, char * plaintext){
 /*
  * Decrypts ciphertext using the vigenere method and keystream
  */
-char * vigenere_decrypt(const char * keystream, char * ciphertext){
+char * vigenere_decrypt(char * keystream, char * ciphertext){
     char * plaintext = (char *)malloc(strlen(ciphertext)+1);
     memset(plaintext, 0, strlen(ciphertext)+1);
 
@@ -152,7 +160,7 @@ char * vigenere_decrypt(const char * keystream, char * ciphertext){
  * Prints output 1 byte at a time in Hex format
  */
 void print_hex(char * buffer){
-    for(int i=0;i<strlen(buffer)-1;i++){
+    for(int i=0;i<strlen(buffer);i++){
         printf("%02hhX", buffer[i]);
         fflush(stdout);
     }
