@@ -159,9 +159,13 @@ char * vigenere_decrypt(char * keystream, char * ciphertext){
 /*
  * Prints output 1 byte at a time in Hex format
  */
-void print_hex(char * buffer){
-    for(int i=0;i<strlen(buffer);i++){
-        printf("%02hhX", buffer[i]);
+void print_hex(char * buffer, int size){
+    for(int i=0;i<size;i++){
+        if(buffer[i]==0){
+            printf("00");
+        }else{
+            printf("%02hhX", buffer[i]);
+        }
         fflush(stdout);
     }
     putchar('\n');
@@ -184,7 +188,7 @@ char * sanitize(char * buffer){
 }
 
 /* 
- * Reads a string of undefined length from STDIN and removes Newline
+ * Reads a string of undefined length from STDIN and removes newline
  */
 void get_line(char ** buffer){
     size_t size = 0;

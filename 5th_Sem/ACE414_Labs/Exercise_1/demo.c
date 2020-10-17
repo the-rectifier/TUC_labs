@@ -47,7 +47,7 @@ void OTP(){
     ciphertext = encrypt_otp(text, key);
 
     printf("[OTP] encrypted: ");
-    print_hex(ciphertext);
+    print_hex(ciphertext, key_size);
 
     plaintext = decrypt_otp(ciphertext, key);
 
@@ -94,8 +94,8 @@ void vigenere(){
     ciphertext = vigenere_crypt(keystream, text);
     plaintext = vigenere_decrypt(keystream, ciphertext);
 
-    printf("[Vigenere] encrypt: %s\n", ciphertext);
-    printf("[Vigenere] decrypt: %s\n", plaintext);
+    printf("[Vigenere] encrypted: %s\n", ciphertext);
+    printf("[Vigenere] decrypted: %s\n", plaintext);
 
     free(key);
     free(text);
@@ -128,8 +128,8 @@ void caesar(){
     
     ciphertext = caesar_encrypt(text, key);
     plaintext = caesar_decrypt(ciphertext, key);
-    printf("[Caesar] encrypt: %s\n", ciphertext);
-    printf("[Caesar] decrypt: %s\n", plaintext);
+    printf("[Caesar] encrypted: %s\n", ciphertext);
+    printf("[Caesar] decrypted: %s\n", plaintext);
 
     free(text);
     free(ciphertext);

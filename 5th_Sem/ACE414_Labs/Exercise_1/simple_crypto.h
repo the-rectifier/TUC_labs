@@ -13,6 +13,6 @@ char * caesar_decrypt(char *, int);
 void pad_key(char *, char * , int);
 char * vigenere_crypt(char *, char *);
 char * vigenere_decrypt(char *, char *);
-void print_hex(char *);
+void print_hex(char *, int);
 char * sanitize(char *);
 void get_line(char **);
