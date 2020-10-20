@@ -44,12 +44,12 @@ void OTP(){
 
     get_key(key, key_size);
 
-    ciphertext = encrypt_otp(text, key);
+    ciphertext = xor_otp(text, key);
 
     printf("[OTP] encrypted: ");
     print_hex(ciphertext, key_size);
 
-    plaintext = decrypt_otp(ciphertext, key);
+    plaintext = xor_otp(ciphertext, key);
 
     printf("[OTP] decrypted: %s\n", plaintext);
     

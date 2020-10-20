@@ -22,29 +22,16 @@ void get_key(char * key_buffer, int key_length){
 }
 
 /*
- * XORs each byte of plaintext with each byte of Key
+ * XORs each byte of buffer with each byte of Key
  */
-char * encrypt_otp(char * plaintext, char * key){
-    char * ciphertext = (char *)malloc(strlen(key)+1);
-    memset(ciphertext, 0, strlen(key)+1);
+char * xor_otp(char * buffer, char * key){
+    char * out = (char *)malloc(strlen(key)+1);
+    memset(out, 0, strlen(key)+1);
 
     for(int i=0;i<strlen(key);i++){
-        ciphertext[i] = (char) (plaintext[i] ^ key[i]);
+        out[i] = (unsigned char) (buffer[i] ^ key[i]);
     }
-    return ciphertext;
-}
-
-/*
- * XORs each byte of plaintext with each byte of Key
- */
-char * decrypt_otp(char * ciphertext, char * key){
-    char * plaintext = (char *)malloc(strlen(key)+1);
-    memset(plaintext, 0, strlen(key)+1);
-
-    for(int i=0;i<strlen(key);i++){
-        plaintext[i] = (char)(key[i] ^ ciphertext[i]);
-    }
-    return plaintext;
+    return out;
 }
 
 /*

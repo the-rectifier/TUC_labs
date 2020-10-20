@@ -6,8 +6,7 @@
 #define CUSTOM_ALPHABET_LENGTH 62
 
 void get_key(char *, int);
-char * encrypt_otp(char *, char *);
-char * decrypt_otp(char *, char *);
+char * xor_otp(char *, char *);
 char * caesar_encrypt(char *, int);
 char * caesar_decrypt(char *, int);
 void pad_key(char *, char * , int);
