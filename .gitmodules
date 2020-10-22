@@ -1,0 +1,3 @@
+[submodule "tinyos3"]
+	path = tinyos3
+	url = https://github.com/the-rectifier/tinyos3.git
