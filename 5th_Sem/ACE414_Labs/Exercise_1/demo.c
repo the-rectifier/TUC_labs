@@ -90,13 +90,13 @@ void vigenere(){
     }else{
         keystream = key;
     }
-
+    
     ciphertext = vigenere_crypt(keystream, text);
     plaintext = vigenere_decrypt(keystream, ciphertext);
 
     printf("[Vigenere] encrypted: %s\n", ciphertext);
     printf("[Vigenere] decrypted: %s\n", plaintext);
-
+    
     free(key);
     free(text);
     free(plaintext);
