@@ -1,10 +1,10 @@
 # Exercise 1: Simple Cipher Library Implementation in C
 
+Technical University of Crete
 
-## Technical University of Crete
-##  ACE414 - Security of Systems and Services
-#
+ACE414 - Security of Systems and Services
 
+---
 
 ## One-Time Pad:
 
@@ -28,7 +28,7 @@ Encryption is done by some form of function between the Key and Message
 **Output:**
 - Since the resulting bytes may not be printable the result is printed in HEX format
 
-#
+---
 
 ## Caesar Cipher:
 
@@ -57,9 +57,9 @@ and adds it to the selected character.
 - For decrypting is the same exact process but for the key we use the complement of the key
 - Encrypting with key = 4 and then with key = 58 ends up at the starting point (shifting by 62 or 0)
 
-# 
+---
 
-**Vigenere:**
+## **Vigenere:**
 
 **Info:**
 - The vigenere cipher uses many differently shifted Caesar's alphabets to cipher each letter based on a specific letter from a 
@@ -78,4 +78,4 @@ then it is shortened to the text length.
 - The encryption function in algebraic form is Ei = (Pi + Ki) % 26
 - The decryption function in algebraic form is Di = (Ei - Ki + 26) % 26
 - In both cases adding 'A' converts it into an ASCII character.
-#
+---
