@@ -1,13 +1,12 @@
 # Exercise 2: Simple AES ECB (Oh God... :cold_sweat:) Implementation in C
 
 Technical University of Crete
-
+---
 ACE414 - Security of Systems and Services
-
 ---
 
-## First of all, nobody uses ECB, ever!
-
+### First of all, nobody uses ECB, ever!
+### Not that's out of the way.
 
 ## Usage:
 
