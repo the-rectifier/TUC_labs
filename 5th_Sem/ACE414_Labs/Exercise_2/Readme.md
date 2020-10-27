@@ -6,7 +6,7 @@ ACE414 - Security of Systems and Services
 ---
 
 ### First of all, nobody uses ECB, ever!
-### Not that's out of the way.
+### Now that this is out of the way...
 
 ## Usage:
 
