@@ -37,32 +37,32 @@ Options:
 
 ## Implementation details
 
-- The tool uses the [EVP API](https://wiki.openssl.org/index.php/EVP) which provide a high lever interface to OpenSSL's cryptographic functions and operations
+- The tool uses the [EVP API](https://wiki.openssl.org/index.php/EVP) which provides a high level interface to OpenSSL's cryptographic functions and operations
   
 ### Key Derivation:
-- It's done using [BytesToKey](https://www.openssl.org/docs/man1.1.1/man3/EVP_BytesToKey.html) function, a provided string from the user as passphrase and the choses key size 128/256 bits.
+- It's done using the [BytesToKey](https://www.openssl.org/docs/man1.1.1/man3/EVP_BytesToKey.html) function, a provided string from the user as passphrase and the chosen key size 128/256 bits.
 - An appropriate destination cipher is used based on the provided key size
 - Default Digest function is changed from `MD5` to `SHA1`
 - Since ECB is used, there is no need to generate an IV
 
 ### Encryption/Decryption:
-- Encryption and Decryption are done using the appropriate functions for each operation. [Example](https://wiki.openssl.org/index.php/EVP_Symmetric_Encryption_and_Decryption) from the not so helpful wiki. The [man](https://www.openssl.org/docs/man1.1.1/man3/EVP_CIPHER_CTX_new.html) pages are a just a tiny bit better thought.
+- Encryption and Decryption are done using the appropriate functions for each operation. [Example](https://wiki.openssl.org/index.php/EVP_Symmetric_Encryption_and_Decryption) from the not so helpful wiki. The [man](https://www.openssl.org/docs/man1.1.1/man3/EVP_CIPHER_CTX_new.html) pages are just a tiny bit better thought.
 - Firstly the key is generated
-- For each operation respectively the input is read and stored in a buffer
+- For each operation, respectively, the input is read and stored in a buffer
 - The requested operation is performed and the result is stored in the output
 
 ### Signing:
-- For Signing the CMAC algorithm is used along with the [interface](https://man.openbsd.org/CMAC_Init) to set it up
-- For signing the same process as in Encrypting is used, however, before writing the output to the file a CMAC (16 bytes in length) is calculated using the plaintext and the key.
-- Everything then is copied into a larger output buffer (ciphertext then the CMAC) to accomodate both and then written into the output.
+- For Signing, the CMAC algorithm is used along with the [interface](https://man.openbsd.org/CMAC_Init) to set it up
+- For Signing, the same process is used as for Encrypting, however, before writing the output to the file, a CMAC (16 bytes in length) is calculated using the plaintext and the key.
+- Everything then is copied into a larger output buffer (ciphertext then the CMAC) to accomodate both, and then written into the output.
 
 ### Verification:
-- For Verifying the CMAC the tool first reads the input file and seperates the ciphertext from the CMAC
-- After decrypting the ciphertext it calculates a new CMAC 
-- It compares the new CMAC against the shipped one and only IF they match the plaintext will be written to output.
+- For Verifying the CMAC, the tool reads the input file and seperates the ciphertext from the CMAC
+- After decrypting the ciphertext, it calculates a new CMAC 
+- It compares the new CMAC against the shipped one and only IF they match, the plaintext will be written to output.
 
-### Implementaion Notes:
-- If User has the -V (verbose) option then the tool will print out info about each stage of the selected operation.
+### Implementation Notes:
+- If User has set the -V (verbose) option, then the tool will print out info about each stage of the current operation.
 - That includes:   
   - Hexdump of the Key
   - Hexdump of the ciphertext generated or read
