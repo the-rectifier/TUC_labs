@@ -1,5 +1,5 @@
 CC = gcc
-CCFLAGS = -O2 -Wall -pedantic -g3 -std=c11
+CCFLAGS = -O2 -Wall -pedantic -g3
 LIBSSL = -lssl -lcrypto
 
 TARGETS = assign_1

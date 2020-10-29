@@ -185,15 +185,15 @@ void check_args(char *input_file, char *output_file, unsigned char *password, in
  */
 void keygen(unsigned char *password, unsigned char *key, int bit_mode, int v){
     const EVP_CIPHER *cipher;
-    const EVP_MD * dgst = EVP_get_digestbyname("sha1");
+    const EVP_MD * dgst = EVP_sha1();
 
     if(!dgst){
         perror("Couldn't find digest");
         exit(EXIT_FAILURE);
     }
 
-    if(bit_mode == 128){cipher = EVP_get_cipherbyname("aes-128-ecb");}
-    else {cipher = EVP_get_cipherbyname("aes-256-ecb");}
+    if(bit_mode == 128){cipher = EVP_aes_128_ecb();}
+    else {cipher = EVP_aes_256_ecb();}
 
     if(!cipher){
         perror("Couldn't find cipher");
@@ -257,7 +257,7 @@ int encrypt(unsigned char * plaintext, int plaintext_len, unsigned char * key, u
     int ciphertext_len;
 
     // Specify ECB mode
-    const struct evp_cipher_st *mode;
+    const EVP_CIPHER *mode;
 
     if(bit_mode == 128){mode = EVP_aes_128_ecb();}
     else {(mode = EVP_aes_256_ecb());}
@@ -320,7 +320,7 @@ void prep_decrypt(char * i_file, char * o_file, unsigned char * key, int bit_mod
 void gen_CMAC(int bit_mode, unsigned char * key, unsigned char * buffer, int buffer_len, unsigned char * cmac, size_t * cmac_len){
     CMAC_CTX *ctx;
 
-    const struct evp_cipher_st *mode;
+    const EVP_CIPHER *mode;
     if(bit_mode == 128){mode = EVP_aes_128_ecb();}
     else {(mode = EVP_aes_256_ecb());}
 
@@ -450,7 +450,7 @@ void verify(char * i_file, char * o_file, unsigned char * key, int bit_mode, int
         if(v){
             puts("CMACs Match!");
         }
-    }else if(v){
+    }else{
         puts("Could not Authenticate MAC!");
     }
 
@@ -460,14 +460,14 @@ void verify(char * i_file, char * o_file, unsigned char * key, int bit_mode, int
     free(plaintext);
 }
 
-int decrypt(unsigned char * ciphertext, int ciphertext_len, unsigned char * key, unsigned char * plaintext, int bit_mode) {
+int decrypt(unsigned char * ciphertext, int ciphertext_len, unsigned char * key, unsigned char * plaintext, int bit_mode){
     // The exact reverse process from ecrypting
     EVP_CIPHER_CTX *ctx;
 
     int len;
     int plaintext_len;
 
-    const struct evp_cipher_st *mode;
+    const EVP_CIPHER *mode;
     if(bit_mode == 128){mode = EVP_aes_128_ecb();}
     else {(mode = EVP_aes_256_ecb());}
 
