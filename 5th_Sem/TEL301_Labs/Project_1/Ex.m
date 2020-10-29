@@ -18,7 +18,7 @@ subplot(3,1,1);
 for i=1:3
     [phi(i,:),t(i,:)] = srrc_pulse(T,over,A(1),a(i));
     plot(t(i,:),phi(i,:));
-    fprintf("BW = %f, for a=%f\n", (a(i)+1)/2*T, a(i));
+    fprintf("BW = %f, for a=%f\n", (a(i)+1)/(2*T), a(i));
     grid on;
     hold on;
 end

@@ -15,7 +15,7 @@ function [phi_K] = phi_kT(phi, time, T, Ts, A)
 
 phi_K = zeros(11,length(time));
 for k=0:1:2*A
-    offset = k*T/Ts;
+    offset = uint64(k*T/Ts);
     padL = zeros(1,offset);
     padR = zeros(1,length(time) - offset - length(phi));
     t_phi_k = [padL, phi, padR];
