@@ -1,5 +1,5 @@
 \documentclass[12pt, a4paper]{article}
-\usepackage[margin=3cm]{geometry}
+\usepackage[margin=2.5cm]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage{color, amssymb}
 \usepackage{listings, amsmath, float}
@@ -43,6 +43,10 @@
 
         \item[B.]Proof of properties of Convolution and the Fourier Transform
         \[x_1[n] \circledast x_2[n] = X_1[N] \cdot X_2[N]\]
+        In order to prove the above property we need to calculate the FT of both signals and then multiply them together.
+        We already have the convolution from the above question, but in the wrong field. We need to calculate the FT of the 
+        Convolution as well to bring them both in the same field. (Note: We can also calculate the inverse FT of the product
+        insted of transforming the convolution)
         \begin{figure}[H]
             \centering
             \includegraphics[width=\textwidth, height=10cm]{B_1.png}
@@ -59,7 +63,6 @@
         \item[c.] \(f_s = 12Hz\)
         \item[d.] \(f_s = 90Hz\)
     \end{enumerate}
-    \pagebreak
 
     \begin{enumerate}
         \item[i.] To calculate the Nyquist frequency we need to take the largest frequency (\(f_{\max}\)) of our two signals in this case \(12Hz\).
@@ -67,15 +70,17 @@
         frequency lower than this, will render the reconstruction worthless.
         \[f_{nyq} = 2 * f_{\max} = 2 * 12 Hz = 24Hz\]
 
-        \item[ii.] Using the complex identities of the sine and cosine functions we can easily derive the Fourier Transform of the above mentioned signal:
+        \item[ii.] Using the complex identities of the sine and cosine functions we can easily derive a sequence of terms for the above mentioned signal:
         \[\cos(t) = \frac{e^{jt} + e^{-jt}}{2}\]
         \[\sin(t) = \frac{e^{jt} - e^{-jt}}{2j}\]
         \[x(t) = \frac{5}{2}e^{2\pi j12t} + \frac{5}{2}e^{-2\pi j12t} + je^{-2\pi j\frac{3}{4}t}
         -je^{2\pi j\frac{3}{4}t}\]
 
         
-        \item[iii.] Transforming each term from above and using the time/frequency shift properties of the FT we end up with:
-        \[F\{1\} = \delta \]
+        \item[iii.] Transforming each term from above and using the time/frequency shift properties of the FT:
+        \[F\{ \delta \}=1\]
+        \[x_{a}e^{2\pi jft} = X(F-f)\]
+        we end up with:
         \[X(F) = \frac{5}{2}\delta(F-12) + \frac{5}{2}\delta(F+12) + 
         j\delta(F+\frac{3}{4}) - j\delta(F-\frac{3}{4})\]
 
@@ -119,7 +124,7 @@
         \[x[n] = x_a(nT_s) = x_a(n\frac{1}{f_s})\]
         the resulting discrete signal is:
         \[x[n] = \sin(2\pi \frac{f_0}{f_{s}} n + \phi)\]
-        \item[i.] Plotting for all 4 (low) different sinusodial frequencies we get the following spectrum for each:   
+        \item[i.] Plotting for all 4 (low) (\(100Hz - 475Hz, step=125Hz\)) different sinusodial frequencies we get the following spectrum for each:   
         \begin{figure}[H]
             \centering
             \includegraphics[width=\textwidth, height=10cm]{3_B_1.png}
@@ -127,10 +132,10 @@
         \end{figure}
     \end{enumerate}
     We can observe that, because the SF, \(f_s\), is so high in respect to \(f_0\) the peaks are shown at every \(f_0\)
-    point on the Frequency Spectrum which that is expected, since that is the Frequency of our sinusodial wave.
+    point on the Frequency Spectrum which is expected, since that is the Frequency of our sinusodial wave.
     \pagebreak
     \begin{enumerate}
-        \item[ii.]Plotting for all 4 (high) different sinusodial frequencies we get the following spectrum for each:   
+        \item[ii.]Plotting for all 4 (high) (\(7525Hz - 7900Hz, step=125Hz\)) different sinusodial frequencies we get the following spectrum for each:   
         \begin{figure}[H]
             \centering
             \includegraphics[width=\textwidth, height=10cm]{3_B_2.png}
