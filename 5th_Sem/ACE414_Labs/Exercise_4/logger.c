@@ -59,6 +59,29 @@ FILE * fopen(const char *path, const char *mode){
 
 
 size_t fwrite(const void *ptr, size_t size, size_t nmemb, FILE *stream){
+    /**
+     * Create new entry struct and init the values we already know
+     * We are writing so by default the access type is 2
+     * uid is the current user
+     * time is the current time
+     */
+    struct entry entry;
+    entry.access_type = 2;
+    entry.uid = getuid();
+    time_t t = time(NULL);
+    entry.time = *localtime(&t);
+    memset(entry.fingerprint, 0, MD5_DIGEST_LENGTH*2+1);
+
+    /**
+     * Get the current file descriptor and sequentialy the filename
+     * grab the absolute path from the filename
+     */
+    int fd = fileno(stream);
+    char proc_fd[255];
+    char filename[255];
+    sprintf(proc_fd, "/proc/self/fd/%d", fd);
+    readlink(proc_fd, filename, 255);
+    entry.file = realpath(filename, NULL);
 
 	size_t original_fwrite_ret;
 	size_t (*original_fwrite)(const void*, size_t, size_t, FILE*);
@@ -67,14 +90,15 @@ size_t fwrite(const void *ptr, size_t size, size_t nmemb, FILE *stream){
 	original_fwrite = dlsym(RTLD_NEXT, "fwrite");
 	original_fwrite_ret = (*original_fwrite)(ptr, size, nmemb, stream);
 
+    if(!original_fwrite_ret){
+        entry.action_denied = 1;
+    }else{
+        entry.action_denied = 0;
+    }
 
-	/* add your code here */
-	/* ... */
-	/* ... */
-	/* ... */
-	/* ... */
-
-
+    get_md5(stream, entry.fingerprint);
+    write_log(entry);
+    free((void *)entry.file);
 	return original_fwrite_ret;
 }
 
