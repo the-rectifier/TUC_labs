@@ -26,7 +26,7 @@ int main()
 //
 //	}
 
-    FILE * fp = fopen("trinki", "r");
+    FILE * fp = fopen("trin123ki", "r");
 	fclose(fp);
 	/* add your code here */
 	/* ... */

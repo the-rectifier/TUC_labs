@@ -45,12 +45,14 @@ FILE * fopen(const char *path, const char *mode){
         get_md5(original_fopen_ret, entry.fingerprint);
         entry.file = realpath(path, NULL);
 	}else{
+	    entry.file = path;
 	    entry.action_denied = 1;
         memcpy(entry.fingerprint, NULL_MD5, MD5_DIGEST_LENGTH*2 +1);
 	}
 
 	write_log(entry);
-	if(entry.file != NULL)
+
+	if(entry.file != NULL && original_fopen_ret != NULL)
 	    free((void *)entry.file);
 	return original_fopen_ret;
 }
