@@ -50,7 +50,7 @@ int main(){
 	fclose(file);
 
 	/* same as above */
-	file = fopen(filenames[3], "wb");
+	file = fopen(filenames[3], "w");
 	for(int i=0;i<10;i++){
 		fwrite(junk, strlen(junk)-1, 1, file);
 	}
@@ -62,6 +62,13 @@ int main(){
 	file = fopen(filenames[4], "r");
 	char buffer[1024];
 	fread(buffer, 69, 1, file);
+	fclose(file);
+
+	/* appent */
+	/* should see empty hash */
+	/* 1 hash change */
+	file = fopen(filenames[5], "a");
+	fwrite(junk, strlen(junk)-1, 2, file);
 	fclose(file);
 
 	return 0;
