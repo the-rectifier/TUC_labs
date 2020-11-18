@@ -45,7 +45,12 @@ FILE * fopen(const char *path, const char *mode){
         get_md5(original_fopen_ret, entry.fingerprint);
         entry.file = realpath(path, NULL);
 	}else{
-	    entry.file = path;
+	    entry.file = realpath(path,NULL);
+        if((!strcmp(mode,"w") || !strcmp(mode,"w+") || !strcmp(mode,"a") || !strcmp(mode,"a+")) && !existed){
+            entry.access_type = 1;
+        }else{
+            entry.access_type = 0;
+        }
 	    entry.action_denied = 1;
         memcpy(entry.fingerprint, NULL_MD5, MD5_DIGEST_LENGTH*2 +1);
 	}
@@ -90,6 +95,10 @@ size_t fwrite(const void *ptr, size_t size, size_t nmemb, FILE *stream){
 	original_fwrite = dlsym(RTLD_NEXT, "fwrite");
 	original_fwrite_ret = (*original_fwrite)(ptr, size, nmemb, stream);
 
+    /**
+     * If the original fwrite returned 0 then we ere denied access
+     * any value <= size means we wrote that many bytes so access was granted
+     */
     if(!original_fwrite_ret){
         entry.action_denied = 1;
     }else{
@@ -135,13 +144,19 @@ void write_log(struct entry entry){
 }
 
 void get_md5(FILE * fp, char buffer[]){
+    /* save current position */
+    fflush(fp);
+    unsigned long position = ftell(fp);
+
     int filesize;
     unsigned char hash[MD5_DIGEST_LENGTH];
     unsigned char * temp;
 
-    fseek(fp,0, SEEK_END);
-    filesize = ftell(fp);
+    /* read the whole file */
     rewind(fp);
+    fseek(fp, 0, SEEK_END);
+    filesize = ftell(fp);
+    fseek(fp, position, SEEK_SET);
 
     temp = (unsigned char *)malloc(filesize);
     fread(temp, filesize, 1, fp);
@@ -154,7 +169,7 @@ void get_md5(FILE * fp, char buffer[]){
 
     MD5_Final(hash, &ctx);
 
-    print_hex(hash, MD5_DIGEST_LENGTH);
+    // print_hex(hash, MD5_DIGEST_LENGTH);
 
     for(int i=0,j=0;i<MD5_DIGEST_LENGTH;i++,j+=2){
         sprintf(&buffer[j], "%02X", hash[i]);
