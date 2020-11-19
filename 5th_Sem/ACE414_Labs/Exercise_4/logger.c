@@ -42,7 +42,7 @@ FILE * fopen(const char *path, const char *mode){
         entry.file = realpath(path, NULL);
 	}else if(original_fopen_ret != NULL){
         entry.access_type = 1;
-        get_md5(original_fopen_ret, entry.fingerprint);
+        get_md5(path, entry.fingerprint);
         entry.file = realpath(path, NULL);
 	}else{
 	    entry.file = realpath(path,NULL);
@@ -95,7 +95,7 @@ size_t fwrite(const void *ptr, size_t size, size_t nmemb, FILE *stream){
 	/* call the original fwrite function */
 	original_fwrite = dlsym(RTLD_NEXT, "fwrite");
 	original_fwrite_ret = (*original_fwrite)(ptr, size, nmemb, stream);
-
+    fflush(stream);
     /**
      * If the original fwrite returned 0 then we ere denied access
      * any value <= size means we wrote that many bytes so access was granted
@@ -106,7 +106,7 @@ size_t fwrite(const void *ptr, size_t size, size_t nmemb, FILE *stream){
         entry.action_denied = 0;
     }
 
-    get_md5(stream, entry.fingerprint);
+    get_md5(entry.file, entry.fingerprint);
     write_log(entry);
     free((void *)entry.file);
 	return original_fwrite_ret;
@@ -144,41 +144,36 @@ void write_log(struct entry entry){
     fclose(fp);
 }
 
-void get_md5(FILE * fp, char buffer[]){
-    /* save current position */
-    fflush(fp);
-    unsigned long position = ftell(fp);
+void get_md5(const char * path, char buffer[]){
+    FILE * fp = fopen_orig(path, "r"); 
+    unsigned char hash[MD5_DIGEST_LENGTH];
 
     int filesize;
-    unsigned char hash[MD5_DIGEST_LENGTH];
-    unsigned char * temp;
+    unsigned char * buff;
 
-    /* read the whole file */
-    rewind(fp);
     fseek(fp, 0, SEEK_END);
     filesize = ftell(fp);
     rewind(fp);
 
-    temp = (unsigned char *)malloc(filesize);
-    fread(temp, filesize, 1, fp);
-    fseek(fp, position, SEEK_SET);
-    // print_hex(temp, filesize);
+    buff = (unsigned char *)malloc(filesize);
+    memset(buff, 0, filesize);
+    fread(buff, filesize, 1, fp);
+    // puts((char *)buff);
 
     MD5_CTX ctx;
 
     MD5_Init(&ctx);
 
-    MD5_Update(&ctx, temp, filesize);
+    MD5_Update(&ctx, buff, filesize);
 
     MD5_Final(hash, &ctx);
-
     // print_hex(hash, MD5_DIGEST_LENGTH);
 
     for(int i=0,j=0;i<MD5_DIGEST_LENGTH;i++,j+=2){
         sprintf(&buffer[j], "%02X", hash[i]);
     }
 
-    free(temp);
+    fclose(fp);
 }
 
 void print_hex(unsigned char *data, size_t len){

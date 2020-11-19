@@ -18,3 +18,4 @@ clean:
 	rm -rf test_aclog
 	rm -rf acmonitor
 	rm -rf file_logging.log
+	rm -rf file_*
