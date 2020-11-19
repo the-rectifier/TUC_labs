@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
@@ -14,14 +15,15 @@ int main(){
 	char junk_1[] = "junk_1";
 	char junk_2[] = "junk_2";
 	char test_append[] = "Nickelback best metal out there \\m/";
+	char * real_path;
 
 	char filenames[10][7] = {"file_0", "file_1",
 			"file_2", "file_3", "file_4",
 			"file_5", "file_6", "file_7",
 			"file_8", "file_9"};
 
-	char tinki[10][69] = {"Gojira", "LOG", "Behemoth", "Megadeth", "Tool", "Trivium", "Godsmack", "Architects", "FUCCCCCCKING SLAAAAAYERRRR", "BLS"};
-	// /* Create all the files */
+	char tinki[10][69] = {"Gojira", "LOG", "Behemoth", "Megadeth", "Tool", "Trivium", "Godsmack", "Architects", "FUCCCCCCKING_SLAAAAAYERRRR", "BLS"};
+	/* Create all the files */
 	for(int i=0;i<10;i++){
 		file = fopen(filenames[i], "w+");
 		if(file == NULL)
@@ -104,14 +106,18 @@ int main(){
 	*/
 	for(int j=0;j<USERS;j++){
         for(int i=0;i<LOGS;i++){
+			real_path = realpath(filenames[i], NULL);
             fprintf(file,
             "%d\t%s\t%d\t%d\t%02d-%02d-%d\t%02d:%02d:%02d\t%s\n",
-            j,filenames[i],1,1,69,69,69,69,69,69,"Gojira");
+            j,real_path,1,1,69,69,69,69,69,69,"Gojira");
+			free(real_path);
         }
     }
+	real_path = realpath(filenames[0], NULL);
 	fprintf(file,
             "%d\t%s\t%d\t%d\t%02d-%02d-%d\t%02d:%02d:%02d\t%s\n",
-            666,filenames[0],1,1,69,69,69,69,69,69,"Gojira");
+            666,real_path,1,1,69,69,69,69,69,69,"Gojira");
+	free(real_path);
 	
 	/**
 	 * Create 100 logs
@@ -119,15 +125,15 @@ int main(){
 	 * Just changing the hashing will do 
 	 * Should see every UID with 10 edits next to it
 	 */
+	real_path = realpath(filenames[8], NULL);
 	for(int j=0;j<USERS;j++){
         for(int i=0;i<LOGS;i++){
             fprintf(file,
             "%d\t%s\t%d\t%d\t%02d-%02d-%d\t%02d:%02d:%02d\t%s\n",
-            j,filenames[8],0,2,69,69,69,69,69,69,tinki[i]);
-			fprintf(file,
-            "%d\t%s\t%d\t%d\t%02d-%02d-%d\t%02d:%02d:%02d\t%s\n",
-            j,filenames[9],0,2,69,69,69,69,69,69,tinki[i]);
+            j,real_path,0,2,69,69,69,69,69,69,tinki[i]);
         }
     }
+	free(real_path);
+	fclose(file);
 	return 0;
 }

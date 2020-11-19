@@ -19,3 +19,4 @@ clean:
 	rm -rf acmonitor
 	rm -rf file_logging.log
 	rm -rf file_*
+	rm -rf junk_*

@@ -53,8 +53,8 @@ void list_unauthorized_accesses(FILE *log){
             &action_denied,
 			&access_type);
 
-		printf("UID: %d\tFILENAME: %s\tACTION_DENIED: %d\tACCES_TYPE: %d\n",
-		uid,filename, action_denied, access_type);
+		// printf("UID: %d\tFILENAME: %s\tACTION_DENIED: %d\tACCES_TYPE: %d\n",
+		// uid,filename, action_denied, access_type);
 		/* first time encountering a failure */
 		if(failures == NULL && action_denied){
 			temp = (struct user *)malloc(sizeof(struct user));
@@ -91,11 +91,13 @@ void list_unauthorized_accesses(FILE *log){
 
 void list_file_modifications(FILE *log, char *file_to_scan){
 	int uid;
+	int access_denied;
 	int lines = 0;
 	char ch;
 	char filename[PATH_MAX] = {0};
 	char fingerprint[MD5_DIGEST_LENGTH*2+1] = {0};
 	char fingerprint_old[MD5_DIGEST_LENGTH*2+1] = {0};
+	char * real_path = realpath(file_to_scan, NULL);
 
 	struct user * mods = NULL;
 	struct user * temp = NULL;
@@ -109,14 +111,16 @@ void list_file_modifications(FILE *log, char *file_to_scan){
 
 	for(int i=0;i<lines;i++){
 		fscanf(log,
-            "%d\t%s\t%*d\t%*d\t%*02d-%*02d-%*d\t%*02d:%*02d:%*02d\t%s\n",
+            "%d\t%s\t%d\t%*d\t%*02d-%*02d-%*d\t%*02d:%*02d:%*02d\t%s\n",
             &uid,
             filename,
+			&access_denied,
             fingerprint);
-
-		if(!strcmp(filename, file_to_scan) && strcmp(fingerprint, fingerprint_old)){
+		// puts(fingerprint);
+		if(!strcmp(filename, real_path) && !access_denied && (strncmp(fingerprint_old, fingerprint, MD5_DIGEST_LENGTH*2+1))){
 			/* File matches, also modded => log user and ++ its mods */
 			/* Update new FP */
+			// printf("UID: %d, FP: %s\n", uid, fingerprint);
 			memcpy(fingerprint_old, fingerprint, MD5_DIGEST_LENGTH*2 +1);
 			if(mods == NULL){
 				temp = (struct user *)malloc(sizeof(struct user));
@@ -153,6 +157,8 @@ void list_file_modifications(FILE *log, char *file_to_scan){
 		free(mods);
 		mods = temp;
 	}
+
+	free(real_path);
 	return;
 
 }
