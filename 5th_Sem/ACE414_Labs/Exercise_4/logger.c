@@ -55,6 +55,7 @@ FILE * fopen(const char *path, const char *mode){
         memcpy(entry.fingerprint, NULL_MD5, MD5_DIGEST_LENGTH*2 +1);
 	}
 
+    // puts(path);
 	write_log(entry);
 
 	if(entry.file != NULL && original_fopen_ret != NULL)
@@ -156,10 +157,12 @@ void get_md5(FILE * fp, char buffer[]){
     rewind(fp);
     fseek(fp, 0, SEEK_END);
     filesize = ftell(fp);
-    fseek(fp, position, SEEK_SET);
+    rewind(fp);
 
     temp = (unsigned char *)malloc(filesize);
     fread(temp, filesize, 1, fp);
+    fseek(fp, position, SEEK_SET);
+    // print_hex(temp, filesize);
 
     MD5_CTX ctx;
 
