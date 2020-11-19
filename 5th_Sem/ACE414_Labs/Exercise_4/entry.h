@@ -43,7 +43,7 @@ void new_user(struct user *, int, char *, int);
 
 void add_failure(struct user *, char *);
 
-void get_md5(FILE *, char *);
+void get_md5(const char *, char *);
 
 void write_log(struct entry);
 
