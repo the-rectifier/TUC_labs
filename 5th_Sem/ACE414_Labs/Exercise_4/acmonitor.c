@@ -1,16 +1,18 @@
+#define _GNU_SOURCE
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <limits.h>
+
+#include "entry.h"
 
 
-void
-usage(void)
-{
+void usage(void) {
 	printf(
 	       "\n"
-	       "usage:\n"
+	       "Usage:\n"
 	       "\t./monitor \n"
 		   "Options:\n"
 		   "-m, Prints malicious users\n"
@@ -23,39 +25,78 @@ usage(void)
 }
 
 
-void 
-list_unauthorized_accesses(FILE *log)
-{
+void list_unauthorized_accesses(FILE *log){
+	struct user * failures = NULL;
+	struct user * temp = NULL;
 
-	/* add your code here */
-	/* ... */
-	/* ... */
-	/* ... */
-	/* ... */
+	int uid;
+	int action_denied;
+	int access_type;
+
+	char filename[PATH_MAX] = {0};
+
+	int lines = 0;
+	char ch;
+	
+	while(!feof(log)){
+		ch = fgetc(log);
+		if(ch == '\n')
+			lines++;
+	}
+	rewind(log);
+
+	for(int i=0;i<lines;i++){
+		fscanf(log,
+            "%d\t%s\t%d\t%d\t%*02d-%*02d-%*d\t%*02d:%*02d:%*02d\t%*s\n",
+            &uid,
+            filename,
+            &action_denied,
+			&access_type);
+
+		printf("UID: %d\tFILENAME: %s\tACTION_DENIED: %d\tACCES_TYPE: %d\n",
+		uid,filename, action_denied, access_type);
+		/* first time encountering a failure */
+		if(failures == NULL && action_denied){
+			temp = (struct user *)malloc(sizeof(struct user));
+			temp->access_fail = 1;
+			temp->uid = uid;
+			temp->access_type = access_type;
+
+			memcpy(temp->filenames[0], filename, PATH_MAX);
+			temp->next = NULL;
+			failures = temp;
+		}else if(action_denied){
+			if((temp = in_list(failures, uid)) == NULL){
+				new_user(failures, uid, filename, access_type);
+			}else{
+				add_failure(temp, filename);
+			}
+		}
+	}
+	temp = failures;
+	while(temp != NULL){
+		if(temp->flagged){
+			printf("Malicous User (UID): %d\n", temp->uid);
+		}
+		temp = temp->next;
+	}
+	while(failures != NULL){
+		temp = failures->next;
+		free(failures);
+		failures = temp;
+	}
+	return;
+}
+
+
+void list_file_modifications(FILE *log, char *file_to_scan){
 
 	return;
 
 }
 
 
-void
-list_file_modifications(FILE *log, char *file_to_scan)
-{
-
-	/* add your code here */
-	/* ... */
-	/* ... */
-	/* ... */
-	/* ... */
-
-	return;
-
-}
-
-
-int 
-main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]){
 
 	int ch;
 	FILE *log;
@@ -83,17 +124,57 @@ main(int argc, char *argv[])
 
 	}
 
-
-	/* add your code here */
-	/* ... */
-	/* ... */
-	/* ... */
-	/* ... */
-
-
 	fclose(log);
 	argc -= optind;
 	argv += optind;	
 	
 	return 0;
+}
+
+
+struct user * in_list(struct user * user, int key){
+    while(user->next != NULL){
+        if(user->uid == key){
+            return user;
+        }
+        user = user->next;
+    }
+    return NULL;
+}
+
+/* adds new failure to failures */
+void new_user(struct user * list, int uid, char * filename, int access_type){
+	struct user * new = (struct user *)malloc(sizeof(struct user));
+	struct user * tmp = list;
+
+	while(tmp->next != NULL){
+		tmp = tmp->next;
+	}
+
+	tmp->next = new;
+	new->uid = uid;
+	new->access_type = access_type;
+	new->access_fail = 1;
+	new->next = NULL;
+
+	memcpy(new->filenames[0], filename, PATH_MAX);
+}
+
+/* add new failure to user */
+void add_failure(struct user * user, char * file){
+	int file_exists = 0;
+	if(!user->flagged){
+		for(int i=0;i<8;i++){
+			if(!strcmp(file, user->filenames[i])){
+				file_exists = 1;
+			}
+		}
+		if(!file_exists){
+			user->access_fail++;
+			memcpy(user->filenames[user->access_fail-1], file, PATH_MAX);
+		}
+	}
+	if(user->access_fail == 8){
+		user->flagged = 1;
+	}
 }
