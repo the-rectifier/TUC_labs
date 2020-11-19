@@ -90,7 +90,69 @@ void list_unauthorized_accesses(FILE *log){
 
 
 void list_file_modifications(FILE *log, char *file_to_scan){
+	int uid;
+	int lines = 0;
+	char ch;
+	char filename[PATH_MAX] = {0};
+	char fingerprint[MD5_DIGEST_LENGTH*2+1] = {0};
+	char fingerprint_old[MD5_DIGEST_LENGTH*2+1] = {0};
 
+	struct user * mods = NULL;
+	struct user * temp = NULL;
+	
+	while(!feof(log)){
+		ch = fgetc(log);
+		if(ch == '\n')
+			lines++;
+	}
+	rewind(log);
+
+	for(int i=0;i<lines;i++){
+		fscanf(log,
+            "%d\t%s\t%*d\t%*d\t%*02d-%*02d-%*d\t%*02d:%*02d:%*02d\t%s\n",
+            &uid,
+            filename,
+            fingerprint);
+
+		if(!strcmp(filename, file_to_scan) && strcmp(fingerprint, fingerprint_old)){
+			/* File matches, also modded => log user and ++ its mods */
+			/* Update new FP */
+			memcpy(fingerprint_old, fingerprint, MD5_DIGEST_LENGTH*2 +1);
+			if(mods == NULL){
+				temp = (struct user *)malloc(sizeof(struct user));
+				temp->uid = uid;
+				temp->mods = 1;
+				temp->next = NULL;
+				mods = temp;
+			}else{
+				/* Check for user and add to list if neccessary */
+				temp = in_list(mods, uid);
+				if(temp == NULL){
+					temp = mods;
+					while(temp->next != NULL){
+						temp = temp->next;
+					}
+					temp->next = (struct user *)malloc(sizeof(struct user));
+					temp->next->uid = uid;
+					temp->next->mods = 1;
+					temp->next->next = NULL;
+				}else{
+					temp->mods++;
+				}
+			}
+		}
+	}
+
+	temp = mods;
+	while(temp != NULL){
+		printf("UID: %d\t, MODS: %d\n", temp->uid,temp->mods);
+		temp = temp->next;
+	}
+	while(mods != NULL){
+		temp = mods->next;
+		free(mods);
+		mods = temp;
+	}
 	return;
 
 }
@@ -133,11 +195,12 @@ int main(int argc, char *argv[]){
 
 
 struct user * in_list(struct user * user, int key){
-    while(user->next != NULL){
-        if(user->uid == key){
-            return user;
+	struct user * tmp = user;
+    while(tmp != NULL){
+        if(tmp->uid == key){
+            return tmp;
         }
-        user = user->next;
+        tmp = tmp->next;
     }
     return NULL;
 }
