@@ -52,7 +52,7 @@ FILE * fopen(const char *path, const char *mode){
             entry.access_type = 0;
         }
 	    entry.action_denied = 1;
-        memcpy(entry.fingerprint, NULL_MD5, MD5_DIGEST_LENGTH*2 +1);
+        memcpy(entry.fingerprint, "0", MD5_DIGEST_LENGTH*2 +1);
 	}
 
     // puts(path);

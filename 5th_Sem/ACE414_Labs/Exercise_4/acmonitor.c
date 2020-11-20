@@ -92,6 +92,7 @@ void list_unauthorized_accesses(FILE *log){
 void list_file_modifications(FILE *log, char *file_to_scan){
 	int uid;
 	int access_denied;
+	int access_type;
 	int lines = 0;
 	char ch;
 	char filename[PATH_MAX] = {0};
@@ -111,13 +112,14 @@ void list_file_modifications(FILE *log, char *file_to_scan){
 
 	for(int i=0;i<lines;i++){
 		fscanf(log,
-            "%d\t%s\t%d\t%*d\t%*02d-%*02d-%*d\t%*02d:%*02d:%*02d\t%s\n",
+            "%d\t%s\t%d\t%d\t%*02d-%*02d-%*d\t%*02d:%*02d:%*02d\t%s\n",
             &uid,
             filename,
 			&access_denied,
+			&access_type,
             fingerprint);
 		// puts(fingerprint);
-		if(!strcmp(filename, real_path) && !access_denied && (strncmp(fingerprint_old, fingerprint, MD5_DIGEST_LENGTH*2+1))){
+		if(!strcmp(filename, real_path) && access_type && !access_denied && (strncmp(fingerprint_old, fingerprint, MD5_DIGEST_LENGTH*2+1))){
 			/* File matches, also modded => log user and ++ its mods */
 			/* Update new FP */
 			// printf("UID: %d, FP: %s\n", uid, fingerprint);
