@@ -117,6 +117,9 @@ int main(){
 	fprintf(file,
             "%d\t%s\t%d\t%d\t%02d-%02d-%d\t%02d:%02d:%02d\t%s\n",
             666,real_path,1,1,69,69,69,69,69,69,"Gojira");
+	fprintf(file,
+            "%d\t%s\t%d\t%d\t%02d-%02d-%d\t%02d:%02d:%02d\t%s\n",
+            666,real_path,1,1,69,69,69,69,69,69,"LOG");
 	free(real_path);
 	
 	/**

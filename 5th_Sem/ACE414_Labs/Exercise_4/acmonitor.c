@@ -151,7 +151,7 @@ void list_file_modifications(FILE *log, char *file_to_scan){
 
 	temp = mods;
 	while(temp != NULL){
-		printf("UID: %d\t, MODS: %d\n", temp->uid,temp->mods);
+		printf("UID: %d\tMODS: %d\n", temp->uid,temp->mods);
 		temp = temp->next;
 	}
 	while(mods != NULL){

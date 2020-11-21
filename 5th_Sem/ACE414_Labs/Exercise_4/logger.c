@@ -32,6 +32,12 @@ FILE * fopen(const char *path, const char *mode){
 	original_fopen = dlsym(RTLD_NEXT, "fopen");
 	original_fopen_ret = (*original_fopen)(path, mode);
 
+    char path_buff[PATH_MAX];
+    getcwd(path_buff, sizeof(path_buff));
+    strcat(path_buff, "/");
+    strcat(path_buff, path);
+    entry.file = path_buff;
+
 	// check if !NULL ptr returned for a non existant file
 	// if not null then file was created => access type = 0
 	// if existed was true then we opened succesfully access type = 1
@@ -39,13 +45,10 @@ FILE * fopen(const char *path, const char *mode){
 	if(original_fopen_ret != NULL && !existed){
         entry.access_type = 0;
         memcpy(entry.fingerprint, EMPTY_MD5, MD5_DIGEST_LENGTH*2 +1);
-        entry.file = realpath(path, NULL);
 	}else if(original_fopen_ret != NULL){
         entry.access_type = 1;
         get_md5(path, entry.fingerprint);
-        entry.file = realpath(path, NULL);
 	}else{
-	    entry.file = realpath(path,NULL);
         if((!strcmp(mode,"w") || !strcmp(mode,"w+") || !strcmp(mode,"a") || !strcmp(mode,"a+")) && !existed){
             entry.access_type = 1;
         }else{
@@ -57,9 +60,6 @@ FILE * fopen(const char *path, const char *mode){
 
     // puts(path);
 	write_log(entry);
-
-	if(entry.file != NULL && original_fopen_ret != NULL)
-	    free((void *)entry.file);
 	return original_fopen_ret;
 }
 
