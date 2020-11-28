@@ -147,7 +147,7 @@ void write_log(struct entry entry){
 void get_md5(const char * path, char buffer[]){
     FILE * fp = fopen_orig(path, "rb"); 
     unsigned char hash[MD5_DIGEST_LENGTH];
-    unsigned char buff[512];
+    unsigned char buff[512] = {0};
     size_t bytes;
 
     // puts((char *)buff);
