@@ -83,8 +83,8 @@ size_t fwrite(const void *ptr, size_t size, size_t nmemb, FILE *stream){
      * grab the absolute path from the filename
      */
     int fd = fileno(stream);
-    char proc_fd[255];
-    char filename[255];
+    char proc_fd[255] = {0};
+    char filename[255] = {0};
     sprintf(proc_fd, "/proc/self/fd/%d", fd);
     readlink(proc_fd, filename, 255);
     entry.file = realpath(filename, NULL);
