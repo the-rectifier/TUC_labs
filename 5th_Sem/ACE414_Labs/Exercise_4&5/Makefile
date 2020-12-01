@@ -2,8 +2,8 @@ all: logger acmonitor test_aclog
 FLAGS= -Wall -g3
 
 logger: logger.c
-	gcc ${FLAGS} -fPIC -shared -o logger.so logger.c -lcrypto -ldl
-
+	gcc ${FLAGS} -fPIC -shared -o logger.so logger.c -lcrypto -ldl -D_FILE_OFFSET_BITS=64
+	
 acmonitor: acmonitor.c 
 	gcc ${FLAGS} acmonitor.c -o acmonitor
 
@@ -14,9 +14,10 @@ run: all logger.so test_aclog
 	LD_PRELOAD=./logger.so ./test_aclog
 
 clean:
-	rm -rf logger.so
-	rm -rf test_aclog
-	rm -rf acmonitor
-	rm -rf file_logging.log
 	rm -rf file_*
 	rm -rf junk_*
+	rm -rf logger.so
+	rm -rf file_logging.log
+	rm -rf acmonitor
+	rm -rf test
+
