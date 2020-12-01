@@ -181,3 +181,7 @@ void print_hex(unsigned char *data, size_t len){
         printf("\n");
     }
 }
+
+FILE * fopen64(const char * path, const char * mode){
+    return fopen(path, mode);
+}
