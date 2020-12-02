@@ -17,7 +17,6 @@
 │   └── COMP102_labs
 ├── 3rd_Sem
 │   ├── ACE201_labs
-│   ├── COMP201_labs
 │   ├── COMP211_labs
 │   └── TEL201_labs
 ├── 4th_Sem
