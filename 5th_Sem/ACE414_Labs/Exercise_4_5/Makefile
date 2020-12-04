@@ -22,6 +22,7 @@ clean:
 	rm -rf logger.so
 	rm -rf file_logging.log
 	rm -rf acmonitor
+	rm -rf test_aclog
 	rm -rf test
 	rm -rf create_files
 
