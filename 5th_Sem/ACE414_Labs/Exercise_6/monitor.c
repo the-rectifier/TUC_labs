@@ -12,7 +12,7 @@
 #include <openssl/sha.h>
 
 
-#define DISPLAY_TIMEOUT 2000
+#define DISPLAY_TIMEOUT 400
 #define TCP_EXT_HEADER 6
 #define UDP_EXT_HEADER 17
 #define NO_NXT_IP6 59
