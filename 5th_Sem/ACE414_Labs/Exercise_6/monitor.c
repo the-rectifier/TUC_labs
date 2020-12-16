@@ -328,7 +328,7 @@ void handle_udp_header(const struct udphdr * udp_header, packet_t * packet_s, in
 void usage(void) {
     printf("./monitor -r [dump.pcap] | -i [network interface]\n"
            "Options:\n"
-           "-r  Process Pactes from dump.pcap\n"
+           "-r  Process Packets from dump.pcap\n"
            "-i  Process Packets from network interfate\n"
            "-h  This help message\n");
 }
