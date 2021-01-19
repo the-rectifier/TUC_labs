@@ -7,13 +7,13 @@ Stavrou Odysseas - 2018030199
     The stack of the readString() function looks something like this:
             |/////////////|
     ESP ->  |-------------|
-            |      I      |
-    BUF ->  |-------------|
-            |             |
+    BUF ->  |             |
             |             |
             |     BUF     |
             |             |
             |             |
+            |-------------|
+            |      Ι      |
             |-------------|
     EBP ->  |PREV STACK FR|
             |-------------|
@@ -50,6 +50,7 @@ Stavrou Odysseas - 2018030199
 
 2.) Writting the exploit:
     Name's address: Since the executable is static and non-PIE then the addresses never change, so using GDB we can simply do "p &Name" and grab the output.
+    Also Name's address can be obtained using "objdump -t Greeter | grep Name"
 
     Required padding: 
         i.) Using GDB set breakpoint at the "ret" instruction of readString()
@@ -92,7 +93,11 @@ Stavrou Odysseas - 2018030199
 
 3.) Exploiting
     We need to use a little trick in order to have a successful shell. 
-    If we just print the exploit then the pipe is closed and the newly opened shell has no input so it closes.
+    If we were to execute:
+    
+    ./exploit.py | ./Greeter
+    
+    then the pipe would close and the newly opened shell will have no input so it closes.
 
     We can circumvent this by appeding a stray "cat" command to keep the pipe open like this:
 
@@ -102,11 +107,11 @@ Stavrou Odysseas - 2018030199
 
 
 Notes: The program is written really badly in order for a BOF attack to be possible and also many compiler flags need to be set
-        in order to disable core Security features like the stack canary and PIE.
+        in order to disable core Security features like the stack smashing detection and PIE.
 
-Run "exploit.py" to exploit the packed Greeter program.
+Run "exploit.py" and pipe the output to Greeter's input as shown above, to exploit the packed Greeter program.
 Run "pwn_exp.py" to exploit any compiled version of Greeter, written using the pwntools library (pip install pwntools).
-(It grabs Name's address from the ELF directly)
+(It grabs Name's address from the ELF directly, and handles the IO redirection to and from the opened shell)
 
 
 Standalone Testing the Shellcode:
