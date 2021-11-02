@@ -1,0 +1,97 @@
+#1000
+
+$log TCNT2
+$startlog lab3.log
+
+#1000
+
+// sent AT<CR><LF>
+R1 = 0x41
+UCSRA = 0x80
+#1000
+
+R1 = 0x54
+UCSRA = 0x80
+#1000
+
+R1 = 0x0D
+UCSRA = 0x80
+#1000
+
+R1 = 0x0A
+UCSRA = 0x80
+#1000
+
+// sent C<CR><LF>
+R1 = 0x43
+UCSRA = 0x80
+#1000
+
+R1 = 0x0D
+UCSRA = 0x80
+#1000
+
+R1 = 0x0A
+UCSRA = 0x80
+#1000
+
+// sent N01020102<CR><LF>
+R1 = 0x4E
+UCSRA = 0x80
+#1000
+
+R1 = 0x30
+UCSRA = 0x80
+#1000
+
+R1 = 0x31
+UCSRA = 0x80
+#1000
+
+R1 = 0x30
+UCSRA = 0x80
+#1000
+
+R1 = 0x32
+UCSRA = 0x80
+#1000
+
+R1 = 0x30
+UCSRA = 0x80
+#1000
+
+R1 = 0x31
+UCSRA = 0x80
+#1000
+
+R1 = 0x30
+UCSRA = 0x80
+#1000
+
+R1 = 0x32
+UCSRA = 0x80
+#1000
+
+R1 = 0x0D
+UCSRA = 0x80
+#1000
+
+R1 = 0x0A
+UCSRA = 0x80
+#1000
+
+// sent C<CR><LF>
+R1 = 0x43
+UCSRA = 0x80
+#1000
+
+R1 = 0x0D
+UCSRA = 0x80
+#1000
+
+R1 = 0x0A
+UCSRA = 0x80
+#1000
+
+#1000
+$stoplog
